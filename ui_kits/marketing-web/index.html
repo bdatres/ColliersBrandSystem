@@ -1,0 +1,647 @@
+<!doctype html>
+<!-- @dsCard group="UI Kit — Marketing Web" name="Marketing Web — Homepage" subtitle="Full marketing page · nav · hero · listings · insights · CTA" viewport="1280x900" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colliers — Marketing Web UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { background: #fff; color: var(--col-deep-blue); font-family: var(--font-sans); }
+  /* ---------- HEADER ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: saturate(160%) blur(0);
+    border-bottom: 1px solid rgba(53,62,89,0.10);
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; gap: 36px;
+    padding: 16px 40px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; border: 0; }
+  .brand img { height: 38px; width: auto; display: block; border-radius: 4px; }
+  .nav-links { display: flex; gap: 28px; flex: 1; }
+  .nav-links a {
+    color: var(--col-deep-blue);
+    font: 600 13px/1 "Open Sans";
+    border: 0;
+    padding: 6px 0;
+    transition: color 200ms;
+  }
+  .nav-links a:hover { color: var(--col-medium-blue); }
+  .nav-actions { display: flex; gap: 12px; align-items: center; }
+  .btn {
+    font: 700 13px/1 "Open Sans";
+    padding: 11px 20px;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 200ms cubic-bezier(0.2,0,0,1), color 200ms;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary { background: var(--col-medium-blue); color: #fff; }
+  .btn-primary:hover { background: var(--col-dark-blue); }
+  .btn-secondary { background: transparent; color: var(--col-dark-blue); border: 1.5px solid var(--col-dark-blue); }
+  .btn-secondary:hover { background: rgba(28,84,244,0.08); }
+  .btn-ghost { background: transparent; color: var(--col-dark-blue); padding: 11px 4px; }
+  .btn-ghost:hover { color: var(--col-medium-blue); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    background: var(--col-deep-blue);
+    overflow: hidden;
+    color: #fff;
+  }
+  .hero-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 110px 40px 130px;
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font: 700 12px/1 "Open Sans";
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--col-light-blue);
+  }
+  .hero h1 {
+    font: 300 72px/1.25 "Open Sans";
+    letter-spacing: -0.015em;
+    color: #fff;
+    margin: 18px 0 24px;
+  }
+  .hero h1 b { font-weight: 700; }
+  .hero h1 .hl {
+    background: var(--col-medium-blue);
+    color: #fff;
+    padding: 0.08em 0.18em;
+    border-radius: 12px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    font-weight: 600;
+  }
+  .hero p.lead {
+    font: 400 19px/1.55 "Merriweather";
+    color: rgba(255,255,255,0.86);
+    max-width: 480px;
+    margin: 0 0 32px;
+  }
+  .hero-actions { display: flex; gap: 12px; }
+  .hero .btn-primary { background: #fff; color: var(--col-deep-blue); }
+  .hero .btn-primary:hover { background: var(--col-pale-blue); }
+  .hero .btn-secondary { color: #fff; border-color: rgba(255,255,255,0.6); }
+  .hero .btn-secondary:hover { background: rgba(255,255,255,0.10); border-color: #fff; }
+
+  /* hero block accent */
+  .hero-block {
+    position: absolute;
+    right: -60px; top: 60px;
+    width: 520px; height: 520px;
+    background: var(--col-medium-blue);
+    border-radius: 60px 0 0 60px;
+    z-index: 1;
+  }
+  .hero-search {
+    position: relative; z-index: 3;
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 24px 60px rgba(0,7,89,0.32);
+    align-self: center;
+    color: var(--col-deep-blue);
+  }
+  .search-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+  .search-tabs button {
+    background: transparent;
+    border: 0;
+    font: 700 11px/1 "Open Sans";
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--col-dark-blue-grey);
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .search-tabs button.active { background: var(--col-pale-blue-grey); color: var(--col-deep-blue); }
+  .search-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .search-grid label {
+    display: flex; flex-direction: column; gap: 6px;
+    font: 700 11px/1 "Open Sans";
+    color: var(--col-deep-blue);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .search-grid input, .search-grid select {
+    font: 400 14px/1 "Open Sans";
+    color: var(--col-deep-blue);
+    padding: 10px 12px;
+    border: 1px solid rgba(53,62,89,0.24);
+    border-radius: 4px;
+    background: #fff;
+  }
+  .search-grid input:focus { outline: none; border-color: var(--col-medium-blue); box-shadow: 0 0 0 3px rgba(28,84,244,.18); }
+  .search-submit { margin-top: 14px; width: 100%; }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats {
+    background: var(--col-pale-blue-grey);
+    padding: 56px 40px;
+  }
+  .stats-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px;
+  }
+  .stat-num {
+    font: 300 56px/1 "Open Sans";
+    color: var(--col-deep-blue);
+    letter-spacing: -0.02em;
+  }
+  .stat-num b { font-weight: 700; color: var(--col-medium-blue); }
+  .stat-lbl {
+    font: 700 11px/1.4 "Open Sans";
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--col-dark-blue-grey);
+    margin-top: 12px;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .section { padding: 100px 40px; max-width: 1280px; margin: 0 auto; }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+  .eyebrow { font: 700 12px/1 "Open Sans"; text-transform: uppercase; letter-spacing: 0.18em; color: var(--col-dark-blue); }
+  .section h2 { font: 300 48px/1.05 "Open Sans"; color: var(--col-deep-blue); letter-spacing: -0.01em; margin: 16px 0 0; }
+  .section h2 b { font-weight: 700; }
+  .section .lead { font: 400 17px/1.55 "Merriweather"; color: var(--col-deep-blue-grey); margin: 0; }
+
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .svc {
+    background: #fff;
+    border: 1px solid rgba(53,62,89,0.10);
+    border-radius: 12px;
+    padding: 26px;
+    transition: box-shadow 200ms, transform 200ms;
+    cursor: pointer;
+  }
+  .svc:hover { box-shadow: 0 12px 28px rgba(0,7,89,.10); transform: translateY(-2px); }
+  .svc-icon {
+    width: 48px; height: 48px;
+    background: var(--col-pale-blue-grey);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .svc-icon svg { width: 26px; height: 26px; stroke: var(--col-dark-blue); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .svc h3 { font: 600 20px/1.25 "Open Sans"; color: var(--col-deep-blue); margin: 0 0 8px; }
+  .svc p { font: 400 14px/1.55 "Open Sans"; color: var(--col-deep-blue-grey); margin: 0 0 16px; }
+  .svc a { font: 700 12px/1 "Open Sans"; color: var(--col-medium-blue); border: 0; text-transform: uppercase; letter-spacing: 0.12em; }
+
+  /* ---------- PROPERTY LIST ---------- */
+  .props { background: #F6F8FF; padding: 100px 0; }
+  .props-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .filter-row { display: flex; gap: 8px; margin: 28px 0 36px; flex-wrap: wrap; }
+  .pill {
+    font: 600 12px/1 "Open Sans";
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--col-deep-blue-grey);
+    border: 1px solid rgba(53,62,89,0.18);
+    cursor: pointer;
+    transition: all 200ms;
+  }
+  .pill.active { background: var(--col-medium-blue); color: #fff; border-color: var(--col-medium-blue); }
+  .pill:hover:not(.active) { border-color: var(--col-medium-blue); color: var(--col-medium-blue); }
+
+  .prop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .prop {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(53,62,89,0.08);
+    box-shadow: 0 1px 2px rgba(0,7,89,.06);
+    transition: box-shadow 200ms, transform 200ms;
+    cursor: pointer;
+  }
+  .prop:hover { box-shadow: 0 12px 28px rgba(0,7,89,.10); transform: translateY(-2px); }
+  .prop-img {
+    height: 220px;
+    background: linear-gradient(135deg, #25408F, #1C54F4);
+    position: relative;
+  }
+  .prop-img.b { background: linear-gradient(135deg, #000759, #25408F); }
+  .prop-img.c { background: linear-gradient(135deg, #1C54F4, #4D93FF); }
+  .prop-img::before {
+    /* placeholder building silhouette */
+    content: "";
+    position: absolute;
+    left: 50%; bottom: 0;
+    transform: translateX(-50%);
+    width: 70%; height: 75%;
+    background:
+      linear-gradient(rgba(0,7,89,0.45), rgba(0,7,89,0.0)),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 8px, transparent 8px 16px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 12px, transparent 12px 24px);
+    border-radius: 8px 8px 0 0;
+  }
+  .prop-badge {
+    position: absolute; top: 14px; left: 14px;
+    font: 700 10px/1 "Open Sans";
+    text-transform: uppercase; letter-spacing: 0.14em;
+    padding: 7px 10px;
+    border-radius: 4px;
+    background: #FFD400; color: var(--col-deep-blue);
+  }
+  .prop-badge.lease { background: var(--col-medium-blue); color: #fff; }
+  .prop-body { padding: 18px 20px 20px; }
+  .prop-body .eb { font: 700 10px/1 "Open Sans"; text-transform: uppercase; letter-spacing: 0.16em; color: var(--col-dark-blue); }
+  .prop-body h4 { font: 600 19px/1.2 "Open Sans"; color: var(--col-deep-blue); margin: 8px 0 4px; }
+  .prop-body .loc { font: 400 13px/1.4 "Open Sans"; color: var(--col-dark-blue-grey); }
+  .prop-spec { display: flex; gap: 18px; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(53,62,89,0.10); }
+  .prop-spec div { font: 400 12px/1.3 "Open Sans"; color: var(--col-dark-blue-grey); }
+  .prop-spec b { display: block; font: 700 14px/1.2 "Open Sans"; color: var(--col-deep-blue); margin-bottom: 2px; }
+
+  /* ---------- INSIGHT (pull quote) ---------- */
+  .insight {
+    background: var(--col-deep-blue);
+    color: #fff;
+    padding: 110px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .insight-inner {
+    max-width: 1000px; margin: 0 auto; position: relative; z-index: 2;
+  }
+  .insight .eb { color: var(--col-light-blue); }
+  .insight blockquote {
+    font: 300 38px/1.3 "Merriweather";
+    color: #fff;
+    margin: 22px 0 28px;
+    letter-spacing: -0.01em;
+  }
+  .insight blockquote b { font-weight: 700; color: var(--col-light-blue); }
+  .author { display: flex; align-items: center; gap: 14px; }
+  .avatar { width: 48px; height: 48px; border-radius: 999px; background: var(--col-medium-blue); display: flex; align-items: center; justify-content: center; font: 700 16px/1 "Open Sans"; color: #fff; }
+  .author-name { font: 700 14px/1.3 "Open Sans"; color: #fff; }
+  .author-title { font: 400 12px/1.3 "Open Sans"; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+  /* ---------- INSIGHTS GRID ---------- */
+  .insights-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 20px; }
+  .ins-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(53,62,89,0.08);
+    cursor: pointer;
+    transition: box-shadow 200ms, transform 200ms;
+  }
+  .ins-card:hover { box-shadow: 0 12px 28px rgba(0,7,89,.10); transform: translateY(-2px); }
+  .ins-img { height: 180px; background: linear-gradient(135deg, #25408F, #4D93FF); position: relative; }
+  .ins-img.b { background: linear-gradient(135deg, #000759, #1C54F4); }
+  .ins-img.c { background: linear-gradient(135deg, #1C54F4, #25408F); }
+  .ins-card.feat .ins-img { height: 280px; }
+  .ins-body { padding: 22px 24px 24px; }
+  .ins-body .eb { font: 700 10px/1 "Open Sans"; text-transform: uppercase; letter-spacing: 0.16em; color: var(--col-dark-blue); }
+  .ins-body h4 { font: 600 18px/1.3 "Open Sans"; color: var(--col-deep-blue); margin: 10px 0 8px; }
+  .ins-card.feat .ins-body h4 { font: 300 28px/1.2 "Open Sans"; }
+  .ins-body p { font: 400 13px/1.5 "Open Sans"; color: var(--col-dark-blue-grey); margin: 0 0 14px; }
+  .ins-meta { font: 400 11px/1 "Open Sans"; color: var(--col-mid-blue-grey); }
+
+  /* ---------- CTA STRIP ---------- */
+  .cta {
+    background: var(--col-medium-blue);
+    color: #fff;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative; z-index: 2;
+  }
+  .cta h2 { font: 300 48px/1.05 "Open Sans"; color: #fff; margin: 0; letter-spacing: -0.01em; }
+  .cta h2 b { font-weight: 700; }
+  .cta p { font: 400 17px/1.5 "Merriweather"; color: rgba(255,255,255,0.86); margin: 16px 0 0; }
+  .cta-actions { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
+  .cta .btn-primary { background: #fff; color: var(--col-medium-blue); }
+  .cta .btn-primary:hover { background: var(--col-pale-blue); }
+  .cta .btn-secondary { color: #fff; border-color: rgba(255,255,255,0.6); }
+  .cta .btn-secondary:hover { background: rgba(255,255,255,0.10); border-color: #fff; }
+
+  /* ---------- FOOTER ---------- */
+  .footer { background: var(--col-deep-blue); color: rgba(255,255,255,0.78); padding: 80px 40px 40px; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+  .footer-cols h5 { font: 700 11px/1 "Open Sans"; text-transform: uppercase; letter-spacing: 0.18em; color: #fff; margin: 0 0 18px; }
+  .footer-cols a { display: block; font: 400 14px/1.8 "Open Sans"; color: rgba(255,255,255,0.7); border: 0; }
+  .footer-cols a:hover { color: #fff; }
+  .footer .brand img { height: 44px; }
+  .footer-tag { font: 400 14px/1.5 "Merriweather"; color: rgba(255,255,255,0.7); margin: 18px 0 0; max-width: 260px; }
+  .footer-bottom { display: flex; justify-content: space-between; padding-top: 36px; margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.14); font: 400 12px/1 "Open Sans"; color: rgba(255,255,255,0.55); }
+  .footer-bottom .sep { display: flex; gap: 16px; }
+  .footer-bottom a { color: rgba(255,255,255,0.7); border: 0; }
+</style>
+</head>
+<body data-screen-label="01 Marketing Home">
+
+<!-- ======= NAV ======= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#"><img src="../../assets/colliers-logo.png" alt="Colliers"></a>
+    <nav class="nav-links">
+      <a href="#">Services</a>
+      <a href="#">Properties</a>
+      <a href="#">Research</a>
+      <a href="#">About</a>
+      <a href="#">Careers</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">Find an expert</a>
+      <a href="#" class="btn btn-primary">Contact us</a>
+    </div>
+  </div>
+</header>
+
+<!-- ======= HERO ======= -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">COMMERCIAL REAL ESTATE · GLOBAL</div>
+      <h1>Accelerate <span class="hl">success</span><br>wherever you operate.</h1>
+      <p class="lead">Expert advice to property occupiers, owners and investors — backed by the data, market reach and local relationships that move deals forward.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Find a property</a>
+        <a href="#" class="btn btn-secondary">Talk to an advisor</a>
+      </div>
+    </div>
+    <div class="hero-search">
+      <div class="search-tabs">
+        <button class="active">For lease</button>
+        <button>For sale</button>
+        <button>Find a broker</button>
+      </div>
+      <div class="search-grid">
+        <label>Location<input value="London, UK" /></label>
+        <label>Property type
+          <select><option>Office</option><option>Industrial</option><option>Retail</option><option>Multifamily</option></select>
+        </label>
+        <label>Min size (sf)<input value="5,000" /></label>
+        <label>Max size (sf)<input value="50,000" /></label>
+      </div>
+      <button class="btn btn-primary search-submit">Search 1,284 listings</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======= STATS ======= -->
+<section class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">$<b>4.5</b>B</div><div class="stat-lbl">Annual revenue · FY25</div></div>
+    <div><div class="stat-num"><b>22,000</b>+</div><div class="stat-lbl">Professionals worldwide</div></div>
+    <div><div class="stat-num"><b>68</b></div><div class="stat-lbl">Countries we operate in</div></div>
+    <div><div class="stat-num"><b>2.0</b>B sf</div><div class="stat-lbl">Under management</div></div>
+  </div>
+</section>
+
+<!-- ======= SERVICES ======= -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">WHAT WE DO</span>
+      <h2>End-to-end real estate <b>expertise</b>.</h2>
+    </div>
+    <p class="lead">From leasing and capital markets to research and project management — six service lines, one accountable team.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 11h.01M12 11h.01M15 11h.01"/></svg></div>
+      <h3>Occupier Services</h3>
+      <p>Right-sizing portfolios with the data and tenant-rep depth to negotiate from strength.</p>
+      <a href="#">EXPLORE →</a>
+    </div>
+    <div class="svc">
+      <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+      <h3>Capital Markets</h3>
+      <p>Investment sales, debt and equity advisory across every major asset class.</p>
+      <a href="#">EXPLORE →</a>
+    </div>
+    <div class="svc">
+      <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
+      <h3>Valuation &amp; Advisory</h3>
+      <p>Independent valuations grounded in local insight and global data infrastructure.</p>
+      <a href="#">EXPLORE →</a>
+    </div>
+    <div class="svc">
+      <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+      <h3>Property Management</h3>
+      <p>Operating real assets to maximise value across the lifecycle.</p>
+      <a href="#">EXPLORE →</a>
+    </div>
+    <div class="svc">
+      <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+      <h3>Research</h3>
+      <p>The market intelligence behind every decision, published quarterly.</p>
+      <a href="#">EXPLORE →</a>
+    </div>
+    <div class="svc">
+      <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Project Management</h3>
+      <p>Fit-out, relocation and capital projects delivered on time and on budget.</p>
+      <a href="#">EXPLORE →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PROPERTIES ======= -->
+<section class="props">
+  <div class="props-inner">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:40px">
+      <div>
+        <span class="eyebrow">FEATURED LISTINGS</span>
+        <h2 style="font: 300 48px/1.05 'Open Sans'; color: var(--col-deep-blue); margin: 16px 0 0;">Spaces ready to <b>move on</b>.</h2>
+      </div>
+      <a href="#" class="btn btn-secondary">View all 1,284 →</a>
+    </div>
+    <div class="filter-row">
+      <button class="pill active">All</button>
+      <button class="pill">Office</button>
+      <button class="pill">Industrial</button>
+      <button class="pill">Retail</button>
+      <button class="pill">Multifamily</button>
+      <button class="pill">Hotels</button>
+    </div>
+    <div class="prop-grid">
+      <div class="prop">
+        <div class="prop-img"><span class="prop-badge lease">FOR LEASE</span></div>
+        <div class="prop-body">
+          <div class="eb">OFFICE</div>
+          <h4>100 Bishopsgate</h4>
+          <div class="loc">London EC2 · The City</div>
+          <div class="prop-spec">
+            <div><b>18,420</b>sq ft</div>
+            <div><b>£72</b>/sq ft</div>
+            <div><b>Floor 32</b>views</div>
+          </div>
+        </div>
+      </div>
+      <div class="prop">
+        <div class="prop-img b"><span class="prop-badge">FOR SALE</span></div>
+        <div class="prop-body">
+          <div class="eb">INDUSTRIAL</div>
+          <h4>Prologis Park Heathrow</h4>
+          <div class="loc">Hayes UB3 · Greater London</div>
+          <div class="prop-spec">
+            <div><b>240,000</b>sq ft</div>
+            <div><b>£62M</b>guide</div>
+            <div><b>5.4%</b>NIY</div>
+          </div>
+        </div>
+      </div>
+      <div class="prop">
+        <div class="prop-img c"><span class="prop-badge lease">FOR LEASE</span></div>
+        <div class="prop-body">
+          <div class="eb">OFFICE · MIXED USE</div>
+          <h4>The Featherstone Building</h4>
+          <div class="loc">London EC1 · Shoreditch</div>
+          <div class="prop-spec">
+            <div><b>32,800</b>sq ft</div>
+            <div><b>£78</b>/sq ft</div>
+            <div><b>BREEAM</b>Excellent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= INSIGHT QUOTE ======= -->
+<section class="insight">
+  <div class="insight-inner">
+    <span class="eb eyebrow" style="color: var(--col-light-blue)">PERSPECTIVE</span>
+    <blockquote>"The capital is back. What's changed is <b>how it asks questions</b> — sharper on cash flow, slower on conviction, and far more interested in the operator than the asset."</blockquote>
+    <div class="author">
+      <div class="avatar">DM</div>
+      <div>
+        <div class="author-name">Damian Marshall</div>
+        <div class="author-title">Head of EMEA Capital Markets</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= INSIGHTS GRID ======= -->
+<section class="section">
+  <div class="section-head" style="grid-template-columns: 1fr 1fr; align-items: end;">
+    <div>
+      <span class="eyebrow">RESEARCH &amp; INSIGHTS</span>
+      <h2>Sharper market <b>intelligence</b>.</h2>
+    </div>
+    <p class="lead">Quarterly outlooks, sector deep-dives and on-the-ground commentary from our 22,000 professionals.</p>
+  </div>
+  <div class="insights-grid">
+    <article class="ins-card feat">
+      <div class="ins-img"></div>
+      <div class="ins-body">
+        <span class="eb">FLAGSHIP REPORT · Q4 2025</span>
+        <h4>Global Capital Markets: where the dry powder lands next.</h4>
+        <p>An end-of-year read on $1.6T of pent-up institutional capital and the asset classes set to absorb it through 2026.</p>
+        <span class="ins-meta">14 min read · Damian Marshall, Anjali Rao, +3</span>
+      </div>
+    </article>
+    <article class="ins-card">
+      <div class="ins-img b"></div>
+      <div class="ins-body">
+        <span class="eb">SECTOR · INDUSTRIAL</span>
+        <h4>Sun Belt logistics: vacancy tightens for the third quarter.</h4>
+        <p>Why occupier demand is outrunning new supply across Dallas, Atlanta and Phoenix.</p>
+        <span class="ins-meta">7 min read</span>
+      </div>
+    </article>
+    <article class="ins-card">
+      <div class="ins-img c"></div>
+      <div class="ins-body">
+        <span class="eb">CITIES · LONDON</span>
+        <h4>The flight to quality — what tenants will pay for in 2026.</h4>
+        <p>Prime rents broke records again. Where the next ceiling sits and which submarkets follow.</p>
+        <span class="ins-meta">5 min read</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ======= CTA ======= -->
+<section class="cta">
+  <div class="cta-inner">
+    <div>
+      <h2>Ready to make the <b>next move</b>?</h2>
+      <p>Tell us what you're working on. We'll connect you with the right team within one business day.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-primary">Talk to an advisor</a>
+      <a href="#" class="btn btn-secondary">Download the report</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div>
+        <a href="#" class="brand"><img src="../../assets/colliers-logo.png" alt="Colliers"></a>
+        <p class="footer-tag">Accelerating success.<br>Global commercial real estate &amp; investment management.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#">Occupier services</a>
+        <a href="#">Capital markets</a>
+        <a href="#">Valuation &amp; advisory</a>
+        <a href="#">Property management</a>
+        <a href="#">Research</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#">About Colliers</a>
+        <a href="#">Leadership</a>
+        <a href="#">News</a>
+        <a href="#">Careers</a>
+        <a href="#">Investor relations</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="#">Find an office</a>
+        <a href="#">Find an expert</a>
+        <a href="#">Media enquiries</a>
+        <a href="#">+44 20 7935 4499</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Colliers International Group Inc. All rights reserved.</span>
+      <span class="sep"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Terms</a><a href="#">Modern slavery</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // simple click handlers
+  document.querySelectorAll('.search-tabs button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.search-tabs button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.pill').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
