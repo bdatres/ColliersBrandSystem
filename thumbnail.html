@@ -1,0 +1,22 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;width:1280px;height:854px;overflow:hidden;}
+  .tile{position:relative;width:1280px;height:854px;background:var(--col-deep-blue);}
+  .main{position:absolute;left:0;top:0;width:75%;height:100%;display:flex;align-items:center;justify-content:center;}
+  .main img{max-width:64%;max-height:40%;}
+  .strip{position:absolute;right:0;top:0;width:25%;height:100%;display:flex;flex-direction:column;}
+  .strip div{flex:1;}
+</style>
+</head><body>
+  <div class="tile">
+    <div class="main"><img src="assets/colliers-logo.png" alt=""></div>
+    <div class="strip">
+      <div style="background:var(--col-pale-blue);"></div>
+      <div style="background:var(--col-light-blue);"></div>
+      <div style="background:var(--col-medium-blue);"></div>
+      <div style="background:var(--col-dark-blue);"></div>
+    </div>
+  </div>
+</body></html>

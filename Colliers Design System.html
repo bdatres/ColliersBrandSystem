@@ -1,0 +1,738 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Design System overview" subtitle="Full single-page system reference" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colliers Design System</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  /* ---- Page scaffold (namespaced under .ds-) ---- */
+  body { background: #fff; color: var(--col-deep-blue); }
+  .ds-wrap { max-width: 1080px; margin: 0 auto; padding: 0 40px 120px; }
+
+  /* Cover */
+  .ds-cover { background: var(--col-deep-blue); color: #fff; margin: 0 0 0; padding: 72px 56px 64px; border-radius: 0 0 28px 0; position: relative; overflow: hidden; }
+  .ds-cover-inner { position: relative; z-index: 2; max-width: 760px; }
+  .ds-cover img { height: 40px; margin-bottom: 40px; display:block; }
+  .ds-cover h1 { color:#fff; font-weight:300; font-size:60px; line-height:1.05; margin:0 0 20px; letter-spacing:-0.02em; }
+  .ds-cover h1 b { font-weight:600; color: var(--col-pale-blue); }
+  .ds-cover p { color: rgba(255,255,255,.82); font-size:18px; max-width:48ch; margin:0; }
+  .ds-cover .ds-tag { margin-top:32px; font-size:13px; color: var(--col-pale-blue-grey); }
+
+  /* Section rhythm */
+  .ds-section { padding-top: 72px; }
+  .ds-eyebrow { font-weight:700; text-transform:uppercase; letter-spacing:.175em; font-size:12px; color: var(--col-dark-blue); margin:0 0 10px; }
+  .ds-section > h2 { font-weight:300; font-size:40px; line-height:1.1; color: var(--col-deep-blue); margin:0 0 14px; }
+  .ds-lead { font-size:17px; color: var(--col-deep-blue-grey); max-width:70ch; margin:0 0 32px; line-height:1.6; }
+  .ds-sub { font-weight:700; text-transform:uppercase; letter-spacing:.14em; font-size:11px; color: var(--col-dark-blue-grey); margin:36px 0 14px; }
+  .ds-note { font-size:13px; color: var(--col-dark-blue-grey); line-height:1.5; margin-top:12px; max-width:72ch; }
+
+  hr.ds-rule { border:0; border-top:1px solid var(--divider); margin:0; }
+
+  /* Swatches */
+  .ds-swatches { display:grid; grid-template-columns: repeat(6, 1fr); gap:12px; }
+  .ds-swatches.sec { grid-template-columns: repeat(5, 1fr); }
+  .ds-sw { height:120px; border-radius:12px; padding:12px; display:flex; flex-direction:column; justify-content:flex-end; color:#fff; border:1px solid rgba(0,7,89,.06); }
+  .ds-sw .n { font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
+  .ds-sw .h { font-family: var(--font-mono); font-size:11px; opacity:.85; }
+  .ds-sw.dark { color: var(--col-deep-blue); }
+  .ds-tints { display:flex; border-radius:12px; overflow:hidden; border:1px solid var(--divider); }
+  .ds-tints div { flex:1; height:64px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; font-family:var(--font-mono); font-size:10px; color:#fff; }
+  .ds-tints div.dk { color: var(--col-deep-blue); }
+
+  /* Type specimens */
+  .ds-typerow { display:grid; grid-template-columns:120px 1fr; gap:24px; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--divider); }
+  .ds-typerow:last-child { border-bottom:0; }
+  .ds-typemeta { font-family:var(--font-mono); font-size:11px; color:var(--col-dark-blue-grey); }
+  .ds-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .ds-famcard { border:1px solid var(--divider); border-radius:16px; padding:28px; }
+  .ds-famcard .big { font-size:56px; line-height:1; color:var(--col-deep-blue); }
+  .ds-famcard .weights { margin-top:18px; display:flex; flex-direction:column; gap:6px; color:var(--col-deep-blue-grey); }
+
+  /* Spacing / radii / elevation */
+  .ds-spaces { display:flex; flex-direction:column; gap:10px; }
+  .ds-spacerow { display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:12px; color:var(--col-dark-blue-grey); }
+  .ds-spacerow .bar { height:16px; background:var(--col-medium-blue); border-radius:3px; }
+  .ds-radii, .ds-elev { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .ds-radii .box { height:96px; background:var(--col-pale-blue-grey); border:1px solid var(--divider); display:flex; align-items:flex-end; justify-content:center; padding-bottom:8px; font-family:var(--font-mono); font-size:11px; color:var(--col-dark-blue); }
+  .ds-elev .box { height:96px; background:#fff; border-radius:12px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:8px; font-family:var(--font-mono); font-size:11px; color:var(--col-dark-blue-grey); }
+  .ds-elev .e1 { box-shadow: var(--shadow-1); }
+  .ds-elev .e2 { box-shadow: var(--shadow-2); }
+  .ds-elev .e3 { box-shadow: var(--shadow-3); }
+  .ds-elev .e0 { border:1px solid var(--divider); }
+
+  /* Components */
+  .ds-panel { border:1px solid var(--divider); border-radius:16px; padding:28px; }
+  .ds-btnrow { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+  .btn { font-family:var(--font-sans); font-weight:700; font-size:15px; padding:12px 24px; border-radius:8px; border:1.5px solid transparent; cursor:pointer; transition: background var(--dur-normal) var(--ease-standard), color var(--dur-normal) var(--ease-standard); }
+  .btn-primary { background:var(--col-medium-blue); color:#fff; }
+  .btn-primary:hover { background:var(--col-dark-blue); }
+  .btn-secondary { background:transparent; color:var(--col-dark-blue); border-color:var(--col-dark-blue); }
+  .btn-secondary:hover { background:var(--state-hover-on-light); }
+  .btn-ghost { background:transparent; color:var(--col-medium-blue); border-color:transparent; }
+  .btn-ghost:hover { background:var(--state-hover-on-light); }
+  .btn-dark { background:var(--col-deep-blue); color:#fff; }
+  .btn-dark:hover { background:var(--col-medium-blue); }
+
+  .ds-input { display:flex; flex-direction:column; gap:6px; max-width:340px; }
+  .ds-input label { font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--col-dark-blue-grey); }
+  .ds-input input { font-family:var(--font-sans); font-size:15px; padding:11px 14px; border:1.5px solid var(--divider-strong); border-radius:8px; color:var(--col-deep-blue); outline:none; transition:border-color var(--dur-fast); }
+  .ds-input input:focus { border-color:var(--col-medium-blue); box-shadow:var(--shadow-focus); }
+  .ds-input input::placeholder { color:var(--col-mid-blue-grey); }
+
+  .ds-badges { display:flex; flex-wrap:wrap; gap:10px; }
+  .badge { font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:5px 12px; border-radius:999px; }
+  .badge-deep { background:var(--col-deep-blue); color:#fff; }
+  .badge-med { background:var(--col-medium-blue); color:#fff; }
+  .badge-pale { background:var(--col-pale-blue); color:var(--col-deep-blue); }
+  .badge-grey { background:var(--col-pale-blue-grey); color:var(--col-deep-blue-grey); }
+  .badge-out { background:#fff; color:var(--col-dark-blue); border:1.5px solid var(--col-dark-blue); }
+
+  .ds-cards3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .ucard { border:1px solid var(--divider); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-1); transition:box-shadow var(--dur-normal); }
+  .ucard:hover { box-shadow:var(--shadow-2); }
+  .ucard .ph { height:96px; background:linear-gradient(135deg,#25408F,#1C54F4); }
+  .ucard .bd { padding:16px 18px 20px; }
+  .ucard .k { font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--col-dark-blue); }
+  .ucard h4 { margin:8px 0 6px; font-weight:600; font-size:18px; color:var(--col-deep-blue); }
+  .ucard p { margin:0; font-size:13px; color:var(--col-dark-blue-grey); }
+
+  .ds-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .ds-stat .num { font-family:var(--font-serif); font-weight:300; font-size:46px; line-height:1; color:var(--col-deep-blue); letter-spacing:-.02em; }
+  .ds-stat .num b { font-weight:700; color:var(--col-medium-blue); }
+  .ds-stat .lbl { font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:.16em; color:var(--col-dark-blue-grey); margin-top:10px; }
+  .ds-stat .sub { font-size:12px; color:var(--col-deep-blue-grey); margin-top:2px; }
+
+  .ds-icons { display:flex; flex-wrap:wrap; gap:22px; }
+  .ds-icons .ic { width:48px; height:48px; color:var(--col-dark-blue); }
+  .ds-icons .ic svg { width:100%; height:100%; }
+
+  /* Graphic elements stages */
+  .ds-stage { position:relative; background:#fff; border:1px solid var(--divider); border-radius:12px; overflow:hidden; box-sizing:border-box; }
+  .gridA { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+
+  /* Putting-it-together gallery */
+  .ds-gallery { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  .poster { position:relative; aspect-ratio:3/4; border-radius:8px; overflow:hidden; background:linear-gradient(150deg,#9fb2c9,#6c7f99); }
+  .poster .blk { position:absolute; }
+  .poster .ttl { position:absolute; color:#fff; font:600 9px/1.1 var(--font-sans); }
+  .poster .frm { position:absolute; inset:7px; border:1px solid rgba(255,255,255,.7); border-radius:2px; pointer-events:none; }
+  .poster.bad::after { content:""; position:absolute; inset:0; background:linear-gradient(to top right, transparent calc(50% - 1px), var(--col-red) 50%, transparent calc(50% + 1px)); }
+  .poster .logo { position:absolute; background:#fff; border-radius:2px; padding:2px 3px; display:flex; }
+  .poster .logo img { width:26px; height:auto; display:block; }
+  .gtag { display:block; font:700 10px/1.3 var(--font-sans); margin-top:10px; color:var(--col-deep-blue); }
+  .gtag.x { color:var(--col-red); }
+  .gtag + .gdesc { font:400 11px/1.4 var(--font-sans); color:var(--col-dark-blue-grey); margin-top:3px; }
+  @media (max-width:760px){ .ds-gallery{grid-template-columns:repeat(2,1fr);} }
+  .gridB { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .capt { font-size:12px; color:var(--col-dark-blue-grey); margin-top:10px; line-height:1.45; }
+
+  /* Voice do/dont */
+  .ds-voice { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--divider); border-radius:16px; overflow:hidden; }
+  .ds-voice .col { padding:24px 26px; }
+  .ds-voice .do { background:var(--col-pale-blue-grey); }
+  .ds-voice h5 { margin:0 0 14px; font-weight:700; font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
+  .ds-voice .do h5 { color:var(--col-dark-blue); }
+  .ds-voice .dont h5 { color:var(--col-dark-blue-grey); }
+  .ds-voice ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .ds-voice li { font-size:14px; line-height:1.45; color:var(--col-deep-blue-grey); padding-left:20px; position:relative; }
+  .ds-voice .do li::before { content:"✓"; position:absolute; left:0; color:var(--col-medium-blue); font-weight:700; }
+  .ds-voice .dont li::before { content:"×"; position:absolute; left:0; color:var(--col-mid-blue-grey); font-weight:700; }
+
+  /* TOC */
+  .ds-toc { display:flex; flex-wrap:wrap; gap:8px 10px; margin-top:36px; }
+  .ds-toc a { font-size:12px; font-weight:600; color:var(--col-dark-blue); border:1px solid var(--divider); border-bottom:1px solid var(--divider); padding:6px 12px; border-radius:999px; text-decoration:none; }
+  .ds-toc a:hover { background:var(--state-hover-on-light); }
+
+  @media (max-width:760px){
+    .ds-swatches,.ds-swatches.sec{grid-template-columns:repeat(2,1fr);}
+    .ds-grid2,.ds-voice,.ds-cards3,.ds-stats,.gridA,.gridB,.ds-radii,.ds-elev{grid-template-columns:1fr;}
+    .ds-cover h1{font-size:40px;}
+  }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#000759">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#000759"/>
+    <rect x="160" y="150" width="560" height="380" rx="40" fill="#25408F"/>
+    <rect x="540" y="330" width="500" height="320" rx="40" fill="#1C54F4"/>
+    <text x="200" y="700" font-family="'Open Sans',sans-serif" font-weight="700" font-size="56" letter-spacing="8" fill="#C3E6FF">DESIGN SYSTEM</text>
+  </svg>
+</template>
+
+<!-- ============ COVER ============ -->
+<header class="ds-cover">
+  <div class="ds-cover-inner">
+    <img src="assets/colliers-logo.png" alt="Colliers">
+    <h1>The Colliers <b>Design System</b></h1>
+    <p>Tokens, type, components and the brand's signature block &amp; keyline compositions — everything needed to build on-brand digital work.</p>
+    <div class="ds-tag">Accelerating success.</div>
+  </div>
+</header>
+
+<div class="ds-wrap">
+
+  <nav class="ds-toc">
+    <a href="#brand">Brand &amp; voice</a>
+    <a href="#color">Color</a>
+    <a href="#type">Typography</a>
+    <a href="#space">Spacing &amp; radii</a>
+    <a href="#elevation">Elevation</a>
+    <a href="#components">Components</a>
+    <a href="#graphics">Blocks &amp; keylines</a>
+    <a href="#data">Data &amp; maps</a>
+    <a href="#logo">Logo</a>
+  </nav>
+
+  <!-- ============ BRAND ============ -->
+  <section class="ds-section" id="brand">
+    <p class="ds-eyebrow">01 — Brand &amp; voice</p>
+    <h2>Confident, credible, human.</h2>
+    <p class="ds-lead">Colliers is a global commercial real estate services and investment management firm. The voice is enterprising and expert — grounded in data, written in plain English, always centerd on the client. "We" for Colliers, "you" for the client, and a confident closing line.</p>
+    <div class="ds-voice">
+      <div class="col do">
+        <h5>Do</h5>
+        <ul>
+          <li>"Your success is our success."</li>
+          <li>"We act quickly to create and seize opportunities."</li>
+          <li>Plain English. Active voice. Short sentences.</li>
+          <li>One closing assertion: "At Colliers, we accelerate success."</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <h5>Don't</h5>
+        <ul>
+          <li>"Industry-leading synergistic outcomes."</li>
+          <li>"Stakeholder-aligned ROI maximization."</li>
+          <li>Jargon, hedging, buzzwords, passive voice.</li>
+          <li>Emoji, exclamation marks, or breathless adjectives.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="ds-note">Five brand values underpin everything: be enterprising, collaborate, invest in relationships, be experts, do what's right.</p>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section class="ds-section" id="color">
+    <p class="ds-eyebrow">02 — Color</p>
+    <h2>Blue dominates everything.</h2>
+    <p class="ds-lead">Anchor every composition with one of the three primary darker blues. White and pale tints balance saturation. Secondary blue-greys handle text and sectioning; the tertiary palette is reserved for charts and capped at 25% of a layout.</p>
+
+    <p class="ds-sub">Primary palette</p>
+    <div class="ds-swatches">
+      <div class="ds-sw" style="background:#000759"><span class="n">Deep Blue</span><span class="h">#000759</span></div>
+      <div class="ds-sw" style="background:#25408F"><span class="n">Dark Blue</span><span class="h">#25408F</span></div>
+      <div class="ds-sw" style="background:#1C54F4"><span class="n">Medium Blue</span><span class="h">#1C54F4</span></div>
+      <div class="ds-sw" style="background:#4D93FF"><span class="n">Light Blue</span><span class="h">#4D93FF</span></div>
+      <div class="ds-sw dark" style="background:#C3E6FF"><span class="n">Pale Blue</span><span class="h">#C3E6FF</span></div>
+      <div class="ds-sw dark" style="background:#fff;border-color:rgba(53,62,89,.18)"><span class="n">White</span><span class="h">#FFFFFF</span></div>
+    </div>
+
+    <p class="ds-sub">Secondary palette · text, backgrounds, sectioning</p>
+    <div class="ds-swatches sec">
+      <div class="ds-sw" style="background:#353E59"><span class="n">Deep Blue Grey</span><span class="h">#353E59</span></div>
+      <div class="ds-sw" style="background:#56648F"><span class="n">Dark Blue Grey</span><span class="h">#56648F</span></div>
+      <div class="ds-sw" style="background:#7B8BBD"><span class="n">Mid Blue Grey</span><span class="h">#7B8BBD</span></div>
+      <div class="ds-sw dark" style="background:#ACBBE8"><span class="n">Light Blue Grey</span><span class="h">#ACBBE8</span></div>
+      <div class="ds-sw dark" style="background:#DBE5FF"><span class="n">Pale Blue Grey</span><span class="h">#DBE5FF</span></div>
+    </div>
+
+    <p class="ds-sub">Tertiary palette · charts &amp; illustration only, ≤ 25% of a layout</p>
+    <div class="ds-swatches">
+      <div class="ds-sw" style="background:#ED1B34"><span class="n">Red</span><span class="h">#ED1B34</span></div>
+      <div class="ds-sw dark" style="background:#FFD400"><span class="n">Yellow</span><span class="h">#FFD400</span></div>
+      <div class="ds-sw" style="background:#0C9ED9"><span class="n">Bright Blue</span><span class="h">#0C9ED9</span></div>
+      <div class="ds-sw" style="background:#FA6609"><span class="n">Orange</span><span class="h">#FA6609</span></div>
+      <div class="ds-sw" style="background:#9C45AE"><span class="n">Purple</span><span class="h">#9C45AE</span></div>
+      <div class="ds-sw" style="background:#2AB6A9"><span class="n">Teal</span><span class="h">#2AB6A9</span></div>
+    </div>
+
+    <p class="ds-sub">Tints · 80 / 60 / 40 / 20 / 10%</p>
+    <div class="ds-tints">
+      <div style="background:#000759">100</div>
+      <div style="background:#33386f">80</div>
+      <div style="background:#666a93">60</div>
+      <div style="background:#999cb7" class="dk">40</div>
+      <div style="background:#cccddb" class="dk">20</div>
+      <div style="background:#e6e6ed" class="dk">10</div>
+    </div>
+    <p class="ds-note">Medium &amp; Light Blue are digital-first — they shift in print. Red reads as a negative trend; only use it on declining data.</p>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section class="ds-section" id="type">
+    <p class="ds-eyebrow">03 — Typography</p>
+    <h2>Open Sans, warmed by Merriweather.</h2>
+    <p class="ds-lead">Open Sans is the workhorse — Light for headlines, Regular for body, Semibold for emphasis, Bold for all-caps section labels. Merriweather adds editorial warmth in subheads and pull quotes. Never mix the two on a single line.</p>
+
+    <div class="ds-grid2">
+      <div class="ds-famcard">
+        <div class="big" style="font-family:var(--font-sans);font-weight:300;">Open Sans</div>
+        <div class="weights" style="font-family:var(--font-sans);">
+          <span style="font-weight:300;">Light — large headlines</span>
+          <span style="font-weight:400;">Regular — body &amp; subheads</span>
+          <span style="font-weight:600;">Semibold — emphasis, small sizes</span>
+          <span style="font-weight:700;">Bold — labels &amp; CTAs</span>
+        </div>
+      </div>
+      <div class="ds-famcard">
+        <div class="big" style="font-family:var(--font-serif);font-weight:300;">Merriweather</div>
+        <div class="weights" style="font-family:var(--font-serif);">
+          <span style="font-weight:300;">Light — editorial headlines</span>
+          <span style="font-weight:400;">Regular — pull quotes, subheads</span>
+          <span style="font-weight:700;">Bold — sparing emphasis</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="ds-sub">Type scale</p>
+    <div class="ds-panel">
+      <div class="ds-typerow"><span class="ds-typemeta">48 · light</span><span style="font:300 48px/1.05 var(--font-sans);color:var(--col-deep-blue);letter-spacing:-.01em;">Display headline</span></div>
+      <div class="ds-typerow"><span class="ds-typemeta">36 · light</span><span style="font:300 36px/1.1 var(--font-sans);color:var(--col-deep-blue);">Section headline</span></div>
+      <div class="ds-typerow"><span class="ds-typemeta">28 · light</span><span style="font:300 28px/1.15 var(--font-sans);color:var(--col-deep-blue);">Card headline</span></div>
+      <div class="ds-typerow"><span class="ds-typemeta">22 · semi</span><span style="font:600 22px/1.2 var(--font-sans);color:var(--col-deep-blue);">Subhead, semibold</span></div>
+      <div class="ds-typerow"><span class="ds-typemeta">18 · serif</span><span style="font:400 18px/1.3 var(--font-serif);color:var(--col-deep-blue-grey);">Merriweather subhead</span></div>
+      <div class="ds-typerow"><span class="ds-typemeta">16 · regular</span><span style="font:400 16px/1.55 var(--font-sans);color:var(--col-deep-blue-grey);">Body copy at the default reading size.</span></div>
+      <div class="ds-typerow"><span class="ds-typemeta">13 · small</span><span style="font:400 13px/1.5 var(--font-sans);color:var(--col-dark-blue-grey);">Caption / metadata</span></div>
+    </div>
+
+    <p class="ds-sub">Section heading &amp; emphasis</p>
+    <div class="ds-grid2">
+      <div class="ds-panel">
+        <div style="font:700 13px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--col-dark-blue);">Market Insights — Q2 2026</div>
+        <p class="capt">Open Sans Bold, all caps, +175 tracking. The brand's "eyebrow" cue for document &amp; section headings.</p>
+      </div>
+      <div class="ds-panel">
+        <div style="font:300 26px/1.2 var(--font-sans);color:var(--col-deep-blue);">We lead with <span class="highlight-box">expertise</span>.</div>
+        <p class="capt">Rounded highlight box (Medium Blue, white text) — a nod to the logo's corners. One or two emphasized words per sentence, one method only.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPACING / RADII ============ -->
+  <section class="ds-section" id="space">
+    <p class="ds-eyebrow">04 — Spacing &amp; radii</p>
+    <h2>An 8-point rhythm.</h2>
+    <p class="ds-lead">Spacing steps from 4 to 96px on an 8-point grid. Generous margins keep the system reading "premium corporate". Radii echo the logo's pronounced rounded rectangle.</p>
+
+    <p class="ds-sub">Spacing scale</p>
+    <div class="ds-panel ds-spaces">
+      <div class="ds-spacerow"><span class="bar" style="width:4px"></span> 4 · space-1</div>
+      <div class="ds-spacerow"><span class="bar" style="width:8px"></span> 8 · space-2</div>
+      <div class="ds-spacerow"><span class="bar" style="width:16px"></span> 16 · space-4</div>
+      <div class="ds-spacerow"><span class="bar" style="width:24px"></span> 24 · space-6</div>
+      <div class="ds-spacerow"><span class="bar" style="width:32px"></span> 32 · space-8</div>
+      <div class="ds-spacerow"><span class="bar" style="width:48px"></span> 48 · space-12</div>
+      <div class="ds-spacerow"><span class="bar" style="width:64px"></span> 64 · space-16</div>
+      <div class="ds-spacerow"><span class="bar" style="width:96px"></span> 96 · space-24</div>
+    </div>
+
+    <p class="ds-sub">Corner radii</p>
+    <div class="ds-radii">
+      <div class="box" style="border-radius:4px">4 · sm</div>
+      <div class="box" style="border-radius:8px">8 · md</div>
+      <div class="box" style="border-radius:12px">12 · lg</div>
+      <div class="box" style="border-radius:20px">20 · xl</div>
+    </div>
+  </section>
+
+  <!-- ============ ELEVATION ============ -->
+  <section class="ds-section" id="elevation">
+    <p class="ds-eyebrow">05 — Elevation</p>
+    <h2>Restrained, blue-tinted shadows.</h2>
+    <p class="ds-lead">The logo guidelines forbid drop shadows, so UI elevation stays subtle. Every shadow is tinted with Deep Blue at low alpha — never neutral grey.</p>
+    <div class="ds-elev">
+      <div class="box e0">flat · border</div>
+      <div class="box e1">shadow-1 · card</div>
+      <div class="box e2">shadow-2 · hover</div>
+      <div class="box e3">shadow-3 · modal</div>
+    </div>
+  </section>
+
+  <!-- ============ COMPONENTS ============ -->
+  <section class="ds-section" id="components">
+    <p class="ds-eyebrow">06 — Components</p>
+    <h2>Building blocks.</h2>
+    <p class="ds-lead">Core UI atoms derived from the brand rules: blue-led buttons, focus-ringed inputs, pill badges, restrained cards, serif KPI figures, and single-color outline icons.</p>
+
+    <p class="ds-sub">Buttons</p>
+    <div class="ds-panel ds-btnrow">
+      <button class="btn btn-primary">Primary action</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-dark">On light</button>
+    </div>
+
+    <div class="ds-grid2" style="margin-top:18px;">
+      <div class="ds-panel">
+        <p class="ds-sub" style="margin-top:0;">Input</p>
+        <div class="ds-input">
+          <label for="x">Work email</label>
+          <input id="x" type="text" placeholder="you@company.com">
+        </div>
+      </div>
+      <div class="ds-panel">
+        <p class="ds-sub" style="margin-top:0;">Badges</p>
+        <div class="ds-badges">
+          <span class="badge badge-deep">For lease</span>
+          <span class="badge badge-med">New</span>
+          <span class="badge badge-pale">Class A</span>
+          <span class="badge badge-grey">Off-market</span>
+          <span class="badge badge-out">Featured</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="ds-sub">Cards</p>
+    <div class="ds-cards3">
+      <div class="ucard"><div class="ph"></div><div class="bd"><span class="k">Office</span><h4>200 King Street West</h4><p>42,000 sf · Toronto, ON</p></div></div>
+      <div class="ucard"><div class="ph"></div><div class="bd"><span class="k">Industrial</span><h4>Gateway Logistics Park</h4><p>310,000 sf · Mississauga</p></div></div>
+      <div class="ucard"><div class="ph"></div><div class="bd"><span class="k">Retail</span><h4>Harbourfront Center</h4><p>18,500 sf · Vancouver, BC</p></div></div>
+    </div>
+
+    <p class="ds-sub">KPI / stat figures</p>
+    <div class="ds-panel ds-stats">
+      <div class="ds-stat"><div class="num">$<b>4.5</b>B</div><div class="lbl">Annual revenue</div><div class="sub">FY2025</div></div>
+      <div class="ds-stat"><div class="num"><b>22,000</b>+</div><div class="lbl">Professionals worldwide</div><div class="sub">68 countries</div></div>
+      <div class="ds-stat"><div class="num"><b>2.0</b>B sf</div><div class="lbl">Under management</div><div class="sub">All asset classes</div></div>
+    </div>
+
+    <p class="ds-sub">Iconography · single-color 1.5pt outline (Lucide-style)</p>
+    <div class="ds-panel ds-icons">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v8h4"/><path d="M18 9h2a2 2 0 0 1 2 2v11h-4"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-6 3 3 5-7"/></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+    </div>
+    <p class="ds-note">Icons are a Lucide substitution that matches the Colliers outline stroke — not the brand's bundled icon set. Always one primary-palette color per icon.</p>
+  </section>
+
+  <!-- ============ GRAPHIC ELEMENTS ============ -->
+  <section class="ds-section" id="graphics">
+    <p class="ds-eyebrow">07 — Blocks &amp; keylines</p>
+    <h2>The signature composition.</h2>
+    <p class="ds-lead">Solid primary-blue blocks and thin dark-blue keylines are the brand's most recognisable graphic device. At most two blocks per layout; if two, they overlap with a ≥ 3:1 size ratio. Keylines frame and organize, and the tagline locks into them.</p>
+
+    <p class="ds-sub">Blocks + keyline — how they interact</p>
+    <div class="gridB">
+      <div>
+        <div class="ds-stage" style="height:150px;background:var(--col-deep-blue);border-color:transparent;">
+          <div style="position:absolute;left:0;top:16%;width:54%;height:58%;background:var(--col-medium-blue);"></div>
+          <div style="position:absolute;left:8%;top:9px;bottom:9px;width:1.5px;background:var(--col-light-blue);"></div>
+          <div style="position:absolute;left:8%;right:9px;bottom:9px;height:1.5px;background:var(--col-light-blue);"></div>
+        </div>
+        <p class="capt"><b>Overlapping</b> — a keyline may overlap a block, as long as it isn't the same color/tint as the block beneath.</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:150px;">
+          <div style="position:absolute;left:0;top:22%;width:52%;height:42%;background:var(--col-medium-blue);"></div>
+          <div style="position:absolute;left:8%;top:9px;height:18px;width:1.5px;background:var(--col-dark-blue);"></div>
+          <div style="position:absolute;left:8%;top:calc(64% + 7px);bottom:9px;width:1.5px;background:var(--col-dark-blue);"></div>
+          <div style="position:absolute;left:8%;right:9px;bottom:9px;height:1.5px;background:var(--col-dark-blue);"></div>
+        </div>
+        <p class="capt"><b>Gap space</b> — the keyline breaks before and after a block it crosses; the gap equals half the layout margin.</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:150px;">
+          <div style="position:absolute;left:0;right:0;bottom:0;height:36%;background:var(--col-deep-blue);"></div>
+          <div style="position:absolute;left:9px;right:9px;top:9px;height:1.5px;background:var(--col-deep-blue);"></div>
+          <div style="position:absolute;left:9px;top:9px;height:calc(64% - 9px);width:1.5px;background:var(--col-deep-blue);"></div>
+          <div style="position:absolute;right:9px;top:9px;height:calc(64% - 9px);width:1.5px;background:var(--col-deep-blue);"></div>
+          <div style="position:absolute;left:9px;top:64%;bottom:9px;width:1.5px;background:#fff;"></div>
+          <div style="position:absolute;right:9px;top:64%;bottom:9px;width:1.5px;background:#fff;"></div>
+          <div style="position:absolute;left:9px;right:9px;bottom:9px;height:1.5px;background:#fff;"></div>
+        </div>
+        <p class="capt"><b>Frame color</b> — a single frame can hold one color or switch as it leads into a darker / lighter background or photo.</p>
+      </div>
+    </div>
+
+    <p class="ds-sub">Keyline — seven options</p>
+    <div class="gridB" style="grid-template-columns:repeat(4,1fr);">
+      <div>
+        <div class="ds-stage" style="height:108px;">
+          <div style="position:absolute;inset:12px;border:1.5px solid var(--col-medium-blue);"></div>
+        </div>
+        <p class="capt">Framed</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:108px;">
+          <div style="position:absolute;left:12px;top:12px;bottom:12px;width:1.5px;background:var(--col-medium-blue);"></div>
+          <div style="position:absolute;left:12px;bottom:12px;right:12px;height:1.5px;background:var(--col-medium-blue);"></div>
+        </div>
+        <p class="capt">Left-aligned</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:108px;">
+          <div style="position:absolute;right:12px;top:12px;bottom:12px;width:1.5px;background:var(--col-medium-blue);"></div>
+          <div style="position:absolute;left:12px;top:12px;right:12px;height:1.5px;background:var(--col-medium-blue);"></div>
+        </div>
+        <p class="capt">Right-aligned</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:108px;">
+          <div style="position:absolute;left:12px;top:12px;bottom:12px;width:1.5px;background:var(--col-medium-blue);"></div>
+          <div style="position:absolute;left:12px;top:12px;right:12px;height:1.5px;background:var(--col-medium-blue);"></div>
+          <div style="position:absolute;left:12px;bottom:12px;right:12px;height:1.5px;background:var(--col-medium-blue);"></div>
+        </div>
+        <p class="capt">Encompassing</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:108px;">
+          <div style="position:absolute;left:14px;right:14px;top:18px;display:flex;align-items:center;gap:6px;">
+            <span style="font:700 7px/1 var(--font-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--col-dark-blue);white-space:nowrap;">Section header</span>
+            <span style="flex:1;height:1.5px;background:var(--col-medium-blue);"></span>
+          </div>
+        </div>
+        <p class="capt">Extending</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:108px;">
+          <div style="position:absolute;left:24px;right:24px;top:50%;height:1.5px;background:var(--col-medium-blue);"></div>
+        </div>
+        <p class="capt">Organizing</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:108px;">
+          <div style="position:absolute;left:50%;top:24px;bottom:24px;width:1.5px;background:var(--col-medium-blue);"></div>
+        </div>
+        <p class="capt">Connecting</p>
+      </div>
+      <div style="display:flex;align-items:center;">
+        <p style="margin:0;font:400 12px/1.5 var(--font-sans);color:var(--col-deep-blue-grey);">Pick the one that best complements the photography and typesetting. Best colors: the three darker blues — Light Blue only on very light images.</p>
+      </div>
+    </div>
+
+    <p class="ds-sub">Keyline gradient</p>
+    <div class="gridA">
+      <div>
+        <div class="ds-stage" style="height:200px;background:#fff;">
+          <div style="position:absolute;inset:14px;background:linear-gradient(180deg,#25408F 0%,#DBE5FF 20%,#4D93FF 55%,#25408F 100%);padding:1.5px;box-sizing:border-box;">
+            <div style="width:100%;height:100%;background:#fff;"></div>
+          </div>
+          <div style="position:absolute;left:34px;top:64px;font:300 20px/1.2 var(--font-sans);color:var(--col-deep-blue);">Primary<br>Message</div>
+          <div style="position:absolute;left:34px;top:120px;font:400 11px/1.4 var(--font-sans);color:var(--col-dark-blue-grey);">Lorem ipsum dolor sit<br>amet, consectetuer</div>
+        </div>
+        <p class="capt"><b>Highlight gradient</b> — a full Medium Blue frame with a Pale Blue Grey highlight at the 20% position (90°). Top and bottom stay in the darker blue.</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:200px;background:var(--col-dark-blue);border-color:transparent;">
+          <div style="position:absolute;left:24px;top:22px;font:700 7px/1 var(--font-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--col-light-blue);">Section header</div>
+          <div style="position:absolute;left:90px;top:23px;right:0;height:1.5px;background:linear-gradient(90deg,#4D93FF 0%,#4D93FF 40%,#DBE5FF 100%);"></div>
+          <div style="position:absolute;left:24px;top:70px;font:300 22px/1.2 var(--font-sans);color:#fff;">Primary<br>Message</div>
+          <div style="position:absolute;left:24px;top:132px;font:400 11px/1.4 var(--font-sans);color:var(--col-pale-blue-grey);">Lorem ipsum dolor sit<br>amet, consectetuer</div>
+          <div style="position:absolute;left:24px;bottom:18px;width:34px;height:16px;background:#fff;border-radius:2px;"></div>
+        </div>
+        <p class="capt"><b>Extending highlight</b> — a Light Blue line transitioning from 60% of the dark color to 100% Pale Blue Grey toward the edge. Ideal with the tagline.</p>
+      </div>
+    </div>
+    <p class="ds-note">Three gradient colors: Medium Blue, Light Blue, Deep Blue — always paired with Pale Blue Grey or White as the lightest stop. Keep transitions smooth, with the gradient positioned between 20–60%.</p>
+
+    <p class="ds-sub">Keyline + tagline placement</p>
+    <div class="gridA">
+      <div>
+        <div class="ds-stage" style="height:150px;">
+          <div style="position:absolute;inset:14px;border:1.5px solid var(--col-dark-blue);"></div>
+          <div style="position:absolute;left:34px;top:30px;font:300 18px/1.2 var(--font-sans);color:var(--col-deep-blue);">We accelerate <b style="font-weight:600;color:var(--col-medium-blue);">success</b>.</div>
+          <div style="position:absolute;left:30px;bottom:7px;background:#fff;padding:0 8px;font:400 10px/1 var(--font-sans);color:var(--col-deep-blue);">Accelerating success.</div>
+        </div>
+        <p class="capt"><b>Intersecting</b> — framed, left/right-aligned and encompassing keylines: the tagline sits on the bottom of the frame.</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:150px;">
+          <div style="position:absolute;left:14px;top:14px;right:14px;height:1.5px;background:var(--col-dark-blue);"></div>
+          <div style="position:absolute;left:14px;bottom:14px;right:14px;height:1.5px;background:var(--col-dark-blue);"></div>
+          <div style="position:absolute;left:34px;top:34px;font:300 18px/1.2 var(--font-sans);color:var(--col-deep-blue);">We accelerate <b style="font-weight:600;color:var(--col-medium-blue);">success</b>.</div>
+          <div style="position:absolute;right:24px;bottom:22px;font:400 10px/1 var(--font-sans);color:var(--col-dark-blue-grey);">Accelerating success.</div>
+        </div>
+        <p class="capt"><b>Corner</b> — organizing, extending and connecting keylines: the tagline sits in the bottom-right or bottom-left, not on the line.</p>
+      </div>
+    </div>
+    <p class="ds-note">"Accelerating success." is the only copy that locks up with a keyline this way, and only along the bottom of the frame or within the logo lockup.</p>
+
+  </section>
+
+  <!-- ============ DATA & MAPS ============ -->
+  <section class="ds-section" id="data">
+    <p class="ds-eyebrow">08 — Data &amp; maps</p>
+    <h2>Tables, charts &amp; maps.</h2>
+    <p class="ds-lead">Data visualisation is deliberately minimalist — only the essentials, always led by the primary blues. Tables use Dark Blue headers and 0.5pt dividers; charts sequence color by priority; maps stay clean, with offices always marked by yellow dots.</p>
+
+    <p class="ds-sub">Table</p>
+    <div class="ds-panel">
+      <table style="width:100%;border-collapse:collapse;font-family:var(--font-sans);">
+        <thead>
+          <tr>
+            <th style="background:var(--col-dark-blue);color:#fff;font:700 10px/1.2 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:left;">Market</th>
+            <th style="background:var(--col-dark-blue);color:#fff;font:700 10px/1.2 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:right;">Avg. asking rent</th>
+            <th style="background:var(--col-dark-blue);color:#fff;font:700 10px/1.2 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:center;">Vacancy</th>
+            <th style="background:var(--col-dark-blue);color:#fff;font:700 10px/1.2 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;text-align:right;">YoY change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-deep-blue-grey);padding:10px 14px;border-bottom:.5px solid var(--divider);">Toronto</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;border-bottom:.5px solid var(--divider);">$38.50</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:center;border-bottom:.5px solid var(--divider);">9.8%</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;border-bottom:.5px solid var(--divider);">+2.4%</td></tr>
+          <tr style="background:rgba(195,230,255,.4);"><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-deep-blue-grey);padding:10px 14px;border-bottom:.5px solid var(--divider);">Vancouver</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;border-bottom:.5px solid var(--divider);">$41.20</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:center;border-bottom:.5px solid var(--divider);">7.2%</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;border-bottom:.5px solid var(--divider);">+1.1%</td></tr>
+          <tr><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-deep-blue-grey);padding:10px 14px;border-bottom:.5px solid var(--divider);">Montréal</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;border-bottom:.5px solid var(--divider);">$26.75</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:center;border-bottom:.5px solid var(--divider);">12.4%</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;border-bottom:.5px solid var(--divider);">−0.6%</td></tr>
+          <tr style="background:rgba(195,230,255,.4);"><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-deep-blue-grey);padding:10px 14px;">Calgary</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;">$24.10</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:center;">18.1%</td><td style="font:400 13px/1.3 var(--font-sans);color:var(--col-dark-blue);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums;">+3.8%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-family:var(--font-condensed);font-size:11px;color:var(--col-dark-blue-grey);margin:12px 0 0;">Source: Colliers Research, Q2 2026. Rents in CAD per sf, net. Footnotes set in Open Sans Condensed.</p>
+    </div>
+    <p class="ds-note">Dark Blue header, 0.5pt dividers, alternating Pale Blue rows at 40%. Copy left-aligned, decimals right-aligned, decimal-free figures centerd.</p>
+
+    <p class="ds-sub">Charts — minimalist, primary-blue first</p>
+    <div class="gridA">
+      <div class="ds-panel">
+        <p style="font:700 10px/1.2 var(--font-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--col-dark-blue-grey);margin:0 0 16px;">Investment volume ($B)</p>
+        <svg viewBox="0 0 280 150" width="100%" height="150">
+          <line x1="34" y1="124" x2="272" y2="124" stroke="#DBE5FF" stroke-width="1"/>
+          <rect x="48"  y="44" width="34" height="80" rx="2" fill="#000759"/>
+          <rect x="94"  y="60" width="34" height="64" rx="2" fill="#25408F"/>
+          <rect x="140" y="38" width="34" height="86" rx="2" fill="#1C54F4"/>
+          <rect x="186" y="74" width="34" height="50" rx="2" fill="#4D93FF"/>
+          <rect x="232" y="92" width="34" height="32" rx="2" fill="#C3E6FF"/>
+          <g style="font:700 9px/1 var(--font-sans);fill:var(--col-deep-blue);">
+            <text x="65"  y="38" text-anchor="middle">4.1</text>
+            <text x="111" y="54" text-anchor="middle">3.2</text>
+            <text x="157" y="32" text-anchor="middle">4.4</text>
+            <text x="203" y="68" text-anchor="middle">2.5</text>
+            <text x="249" y="86" text-anchor="middle">1.6</text>
+          </g>
+          <g style="font:700 8px/1 var(--font-sans);letter-spacing:.08em;fill:var(--col-dark-blue-grey);">
+            <text x="65"  y="138" text-anchor="middle">'22</text>
+            <text x="111" y="138" text-anchor="middle">'23</text>
+            <text x="157" y="138" text-anchor="middle">'24</text>
+            <text x="203" y="138" text-anchor="middle">'25</text>
+            <text x="249" y="138" text-anchor="middle">'26</text>
+          </g>
+        </svg>
+      </div>
+      <div class="ds-panel">
+        <p style="font:700 10px/1.2 var(--font-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--col-dark-blue-grey);margin:0 0 8px;">Capital by sector</p>
+        <div style="display:flex;align-items:center;gap:18px;">
+          <svg viewBox="0 0 150 150" width="120" height="120" style="flex:none;">
+            <g transform="translate(75,75)">
+              <circle r="54" fill="none" stroke="#000759" stroke-width="22" stroke-dasharray="119 220" transform="rotate(-90)"/>
+              <circle r="54" fill="none" stroke="#1C54F4" stroke-width="22" stroke-dasharray="85 254" stroke-dashoffset="-119" transform="rotate(-90)"/>
+              <circle r="54" fill="none" stroke="#4D93FF" stroke-width="22" stroke-dasharray="68 271" stroke-dashoffset="-204" transform="rotate(-90)"/>
+              <circle r="54" fill="none" stroke="#C3E6FF" stroke-width="22" stroke-dasharray="67 272" stroke-dashoffset="-272" transform="rotate(-90)"/>
+            </g>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="display:inline-flex;align-items:center;gap:8px;font:400 12px/1 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:11px;height:11px;border-radius:3px;background:#000759;"></i>Office 35%</span>
+            <span style="display:inline-flex;align-items:center;gap:8px;font:400 12px/1 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:11px;height:11px;border-radius:3px;background:#1C54F4;"></i>Industrial 25%</span>
+            <span style="display:inline-flex;align-items:center;gap:8px;font:400 12px/1 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:11px;height:11px;border-radius:3px;background:#4D93FF;"></i>Retail 20%</span>
+            <span style="display:inline-flex;align-items:center;gap:8px;font:400 12px/1 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:11px;height:11px;border-radius:3px;background:#C3E6FF;"></i>Multifamily 20%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="ds-sub">Chart color priority</p>
+    <div class="ds-panel">
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+        <div style="background:#000759;border-radius:10px;padding:10px 12px;height:72px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;"><span style="font:700 9px/1 var(--font-sans);opacity:.7;">01</span><span style="font:700 11px/1.2 var(--font-sans);">Deep Blue</span></div>
+        <div style="background:#25408F;border-radius:10px;padding:10px 12px;height:72px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;"><span style="font:700 9px/1 var(--font-sans);opacity:.7;">02</span><span style="font:700 11px/1.2 var(--font-sans);">Dark Blue</span></div>
+        <div style="background:#1C54F4;border-radius:10px;padding:10px 12px;height:72px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;"><span style="font:700 9px/1 var(--font-sans);opacity:.7;">03</span><span style="font:700 11px/1.2 var(--font-sans);">Medium Blue</span></div>
+        <div style="background:#4D93FF;border-radius:10px;padding:10px 12px;height:72px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;"><span style="font:700 9px/1 var(--font-sans);opacity:.7;">04</span><span style="font:700 11px/1.2 var(--font-sans);">Light Blue</span></div>
+        <div style="background:#C3E6FF;border-radius:10px;padding:10px 12px;height:72px;display:flex;flex-direction:column;justify-content:space-between;color:var(--col-deep-blue);"><span style="font:700 9px/1 var(--font-sans);opacity:.7;">05</span><span style="font:700 11px/1.2 var(--font-sans);">Pale Blue</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(237,27,52,.06);border:1px solid rgba(237,27,52,.2);">
+        <i style="width:14px;height:14px;border-radius:3px;background:var(--col-red);flex:none;margin-top:2px;"></i>
+        <p style="margin:0;font:400 13px/1.45 var(--font-sans);color:var(--col-deep-blue-grey);"><b>Red is reserved for decline.</b> Because Colliers Red reads as a negative trend, only use it for data that genuinely represents a drop or a warning — never as a general accent.</p>
+      </div>
+    </div>
+
+    <p class="ds-sub">Maps — offices always marked yellow</p>
+    <div class="gridA">
+      <div class="ds-panel">
+        <p style="font:700 10px/1.2 var(--font-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--col-dark-blue-grey);margin:0 0 12px;">Coverage — sub-region tints</p>
+        <svg viewBox="0 0 220 150" width="100%" height="150">
+          <path d="M10 20 L95 12 L110 60 L60 80 L20 70 Z"   fill="#25408F" stroke="#1a2f6b" stroke-width=".5"/>
+          <path d="M95 12 L180 22 L175 70 L110 60 Z"         fill="#7aa0e0" stroke="#25408F" stroke-width=".5"/>
+          <path d="M60 80 L110 60 L175 70 L165 120 L80 132 Z" fill="#ACBBE8" stroke="#25408F" stroke-width=".5"/>
+          <path d="M20 70 L60 80 L80 132 L25 128 Z"           fill="#DBE5FF" stroke="#25408F" stroke-width=".5"/>
+          <circle cx="55" cy="45" r="7" fill="#FFD400" stroke="#000759" stroke-width="1"/><text x="55" y="47.5" text-anchor="middle" style="font:700 6px/1 var(--font-sans);fill:var(--col-deep-blue);">8</text>
+          <circle cx="135" cy="44" r="7" fill="#FFD400" stroke="#000759" stroke-width="1"/><text x="135" y="46.5" text-anchor="middle" style="font:700 6px/1 var(--font-sans);fill:var(--col-deep-blue);">5</text>
+          <circle cx="115" cy="100" r="7" fill="#FFD400" stroke="#000759" stroke-width="1"/><text x="115" y="102.5" text-anchor="middle" style="font:700 6px/1 var(--font-sans);fill:var(--col-deep-blue);">3</text>
+        </svg>
+        <p class="capt">Tints of one primary blue (100 → 10%) separate regions. Office dots are always yellow with a Deep Blue stroke.</p>
+      </div>
+      <div class="ds-panel">
+        <p style="font:700 10px/1.2 var(--font-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--col-dark-blue-grey);margin:0 0 12px;">Approved coverage combinations</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <span style="display:flex;align-items:center;gap:8px;font:400 12px/1.2 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:24px;height:17px;border-radius:3px;background:#DBE5FF;border:1px solid var(--divider);"></i>Pale Blue Grey / White</span>
+          <span style="display:flex;align-items:center;gap:8px;font:400 12px/1.2 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:24px;height:17px;border-radius:3px;background:#CCCDD5;border:1px solid var(--divider);"></i>Grey / White</span>
+          <span style="display:flex;align-items:center;gap:8px;font:400 12px/1.2 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:24px;height:17px;border-radius:3px;background:#ACBBE8;border:1px solid var(--divider);"></i>Light Blue Grey / White</span>
+          <span style="display:flex;align-items:center;gap:8px;font:400 12px/1.2 var(--font-sans);color:var(--col-deep-blue-grey);"><i style="width:24px;height:17px;border-radius:3px;background:#ACBBE8;box-shadow:inset 0 0 0 3px #DBE5FF;"></i>Lt Blue Grey / Pale</span>
+        </div>
+        <p class="capt">Four approved coverage palettes. Borders sit at 0.25pt and 50% of the landmass color; the overall map should never feel too dark.</p>
+      </div>
+    </div>
+
+    <p class="ds-sub">Colliers map style — production values</p>
+    <div class="ds-panel">
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px;">
+        <div style="background:#dbe5ff;border-radius:8px;padding:8px 10px;height:56px;display:flex;flex-direction:column;justify-content:flex-end;"><span style="font:700 9px/1 var(--font-sans);color:var(--col-deep-blue);">Land</span><span style="font:400 10px/1.3 ui-monospace,monospace;color:var(--col-deep-blue-grey);">#dbe5ff</span></div>
+        <div style="background:#56648f;border-radius:8px;padding:8px 10px;height:56px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;"><span style="font:700 9px/1 var(--font-sans);">Minor settlement</span><span style="font:400 10px/1.3 ui-monospace,monospace;">#56648f</span></div>
+        <div style="background:#25408f;border-radius:8px;padding:8px 10px;height:56px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;"><span style="font:700 9px/1 var(--font-sans);">Subdivision label</span><span style="font:400 10px/1.3 ui-monospace,monospace;">#25408f</span></div>
+        <div style="background:#000759;border-radius:8px;padding:8px 10px;height:56px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;"><span style="font:700 9px/1 var(--font-sans);">State / continent</span><span style="font:400 10px/1.3 ui-monospace,monospace;">#000759</span></div>
+        <div style="background:#ffd400;border-radius:8px;padding:8px 10px;height:56px;display:flex;flex-direction:column;justify-content:flex-end;"><span style="font:700 9px/1 var(--font-sans);color:var(--col-deep-blue);">Office marker</span><span style="font:400 10px/1.3 ui-monospace,monospace;color:var(--col-deep-blue-grey);">#ffd400</span></div>
+      </div>
+      <p class="ds-note" style="margin-top:0;">These are the exact paint values from Colliers' official Mapbox GL style ("monochrome-light" variation, <code>reference/Colliers-Map-Style.json</code>) — land fill and place-label colors by hierarchy (state/continent, subdivision, minor settlement). See the live-rendered specimen in the Components tab ("Colliers map style (live)") — it needs a Mapbox access token to fetch tiles.</p>
+    </div>
+  </section>
+
+  <!-- ============ LOGO ============ -->
+  <section class="ds-section" id="logo">
+    <p class="ds-eyebrow">09 — Logo</p>
+    <h2>The master brand mark.</h2>
+    <p class="ds-lead">The full-color logo is used on every digital surface. Minimum 80px wide on screen; clear space equals 2× the height of the color bars on all sides. Never recolor, rotate, add shadows, or place on a colored background without a white keyline.</p>
+    <div class="gridB">
+      <div>
+        <div class="ds-stage" style="height:150px;display:flex;align-items:center;justify-content:center;background:#fff;">
+          <img src="assets/colliers-logo.png" alt="Colliers" style="max-width:70%;max-height:64%;">
+        </div>
+        <p class="capt">On white.</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:150px;display:flex;align-items:center;justify-content:center;background:var(--col-pale-blue-grey);">
+          <img src="assets/colliers-logo.png" alt="Colliers" style="max-width:70%;max-height:64%;">
+        </div>
+        <p class="capt">On Pale Blue Grey.</p>
+      </div>
+      <div>
+        <div class="ds-stage" style="height:150px;display:flex;align-items:center;justify-content:center;background:var(--col-deep-blue);border-color:transparent;">
+          <img src="assets/colliers-logo.png" alt="Colliers" style="max-width:70%;max-height:64%;">
+        </div>
+        <p class="capt">On Deep Blue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEGAL ============ -->
+  <section class="ds-section" id="legal">
+    <p class="ds-eyebrow">10 — Legal &amp; disclaimers</p>
+    <h2>Required legal language.</h2>
+    <p class="ds-lead">This disclaimer must appear on every proposal, research report, marketing collateral, presentation and website page that carries Colliers content. Do not alter the wording.</p>
+    <div class="ds-stage" style="padding:28px 32px;background:var(--col-pale-blue-grey);border-color:transparent;">
+      <p style="font:700 10px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--col-dark-blue);margin:0 0 12px;">Legal disclaimer</p>
+      <p style="font:400 12.5px/1.65 var(--font-sans);color:var(--col-deep-blue-grey);margin:0;">This document/email has been prepared by Colliers for advertising and general information only. Colliers makes no guarantees, representations or warranties of any kind, expressed or implied, regarding the information including, but not limited to, warranties of content, accuracy and reliability. Any interested party should undertake their own inquiries as to the accuracy of the information. Colliers excludes unequivocally all inferred or implied terms, conditions and warranties arising out of this document and excludes all liability for loss and damages arising there from. This publication is the copyrighted property of Colliers and/or its licensor(s). © 2026. All rights reserved. This communication is not intended to cause or induce breach of an existing listing agreement. <em>[Include your market's legal name here. (ex. Colliers International Group Inc.)]</em></p>
+    </div>
+    <p class="ds-sub">Usage notes</p>
+    <ul style="font:400 13px/1.6 var(--font-sans);color:var(--col-dark-blue-grey);margin:0;padding-left:20px;max-width:70ch;">
+      <li>Use on <b style="color:var(--col-deep-blue);">every</b> proposal, research report, marketing collateral, presentation, and website — wording must not be altered in any way.</li>
+      <li>Replace the bracketed line with your market's legal entity name (e.g. Colliers International Group Inc.).</li>
+      <li>Only announcements approved by Global Finance and Communications may include the Colliers NASDAQ / TSX ticker (<b style="color:var(--col-deep-blue);">CIGI</b>) in a press release or boilerplate.</li>
+      <li>Set in small, legible type (Open Sans Condensed works well for length) — never hidden at a size or contrast that fails accessibility checks.</li>
+    </ul>
+  </section>
+
+</div>
+</body>
+</html>

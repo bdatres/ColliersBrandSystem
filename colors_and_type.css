@@ -1,0 +1,452 @@
+/* =========================================================
+   Colliers Design System — Colors & Type
+   Source: Colliers Visual Identity Guidelines
+   ========================================================= */
+
+/* Webfonts — fully self-hosted from uploaded brand files (fonts/).
+   Open Sans (primary) + Open Sans Condensed (data/legal) + Merriweather (secondary).
+   Verdana / Georgia are the documented fallbacks. No CDN dependency. */
+
+/* ---- Open Sans (self-hosted) ---- */
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/OpenSans-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/OpenSans-LightItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/OpenSans-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/OpenSans-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/OpenSans-SemiBoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/OpenSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/OpenSans-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/OpenSans-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/OpenSans-ExtraBoldItalic.ttf") format("truetype");
+}
+
+/* ---- Open Sans Condensed (self-hosted) — legal copy, footnotes, dense tables ---- */
+@font-face {
+  font-family: "Open Sans Condensed";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/OpenSansCondensed_Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans Condensed";
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/OpenSansCondensed_LightItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans Condensed";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/OpenSansCondensed_Bold.ttf") format("truetype");
+}
+
+/* ---- Merriweather (self-hosted) ---- */
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-LIGHT.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-LIGHTITALIC.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-REGULAR.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-REGULARITALIC.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-BOLD.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-BOLDITALIC.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-BLACK.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/MERRIWEATHER-BLACKITALIC.TTF") format("truetype");
+}
+
+:root {
+  /* ---------- PRIMARY PALETTE — Blue dominates ALL designs ---------- */
+  --col-deep-blue:       #000759;  /* darkest, anchor */
+  --col-dark-blue:       #25408F;  /* "Colliers Dark Blue" — the logo blue */
+  --col-medium-blue:     #1C54F4;  /* digital-first, vivid */
+  --col-light-blue:      #4D93FF;  /* digital-first */
+  --col-pale-blue:       #C3E6FF;  /* tint backgrounds */
+  --col-white:           #FFFFFF;
+
+  /* ---------- SECONDARY PALETTE — text, sectioning, backgrounds ---------- */
+  --col-deep-blue-grey:  #353E59;
+  --col-dark-blue-grey:  #56648F;
+  --col-mid-blue-grey:   #7B8BBD;
+  --col-light-blue-grey: #ACBBE8;
+  --col-pale-blue-grey:  #DBE5FF;
+
+  /* ---------- TERTIARY PALETTE — sparingly, charts/illustration ---------- */
+  --col-red:             #ED1B34;  /* logo stripe red */
+  --col-yellow:          #FFD400;  /* logo stripe yellow / map office dots */
+  --col-bright-blue:     #0C9ED9;  /* logo stripe light blue */
+  --col-orange:          #FA6609;
+  --col-purple:          #9C45AE;
+  --col-teal:            #2AB6A9;
+  --col-cool-grey:       #CCCDD5;
+
+  /* ---------- SEMANTIC / FOUNDATION ---------- */
+  /* Foreground (text) */
+  --fg-1: var(--col-deep-blue);          /* primary text on light bg */
+  --fg-2: var(--col-deep-blue-grey);     /* secondary text */
+  --fg-3: var(--col-dark-blue-grey);     /* tertiary / metadata */
+  --fg-mute: var(--col-mid-blue-grey);   /* placeholder, captions */
+  --fg-on-blue: var(--col-white);        /* text on Deep/Dark/Medium Blue */
+  --fg-link: var(--col-medium-blue);
+  --fg-link-hover: var(--col-dark-blue);
+
+  /* Background */
+  --bg-1: var(--col-white);              /* primary surface */
+  --bg-2: var(--col-pale-blue-grey);     /* subtle section */
+  --bg-3: var(--col-pale-blue);          /* informational tint */
+  --bg-block-deep: var(--col-deep-blue); /* "block" graphic element */
+  --bg-block-dark: var(--col-dark-blue);
+  --bg-block-med:  var(--col-medium-blue);
+
+  /* Accents */
+  --accent-stripe-yellow: var(--col-yellow);
+  --accent-stripe-cyan:   var(--col-bright-blue);
+  --accent-stripe-red:    var(--col-red);
+
+  /* Lines / dividers (per Tables guidance: 0.5pt) */
+  --keyline:        var(--col-dark-blue);
+  --divider:        rgba(53, 62, 89, 0.16);  /* deep blue grey @ 16% */
+  --divider-strong: rgba(53, 62, 89, 0.32);
+
+  /* States */
+  --state-hover-on-light: rgba(28, 84, 244, 0.08);
+  --state-press-on-light: rgba(28, 84, 244, 0.16);
+  --state-hover-on-dark:  rgba(255, 255, 255, 0.12);
+  --focus-ring: var(--col-medium-blue);
+
+  /* ---------- TYPE ---------- */
+  --font-sans: "Open Sans", Verdana, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+  --font-condensed: "Open Sans Condensed", "Open Sans", Verdana, sans-serif;  /* legal copy, footnotes, dense tables */
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Weights */
+  --fw-light: 300;      /* @kind font */
+  --fw-regular: 400;    /* @kind font */
+  --fw-semibold: 600;   /* @kind font */
+  --fw-bold: 700;       /* @kind font */
+
+  /* Tracking (CSS letter-spacing equivalents of brand "tracking 100/175") */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.1em;       /* ~+100 */
+  --tracking-x-wide: 0.175em;   /* ~+175, document/section headings */
+
+  /* Sizes (digital scale, 8pt rhythm) */
+  --fs-display: 64px;
+  --fs-h1: 48px;
+  --fs-h2: 36px;
+  --fs-h3: 28px;
+  --fs-h4: 22px;
+  --fs-h5: 18px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-micro: 12px;
+  --fs-eyebrow: 12px;
+
+  --lh-tight: 1.1;      /* @kind font */
+  --lh-snug: 1.25;      /* @kind font */
+  --lh-normal: 1.5;     /* @kind font */
+  --lh-relaxed: 1.65;   /* @kind font */
+
+  /* ---------- SPACING (8pt grid) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ---------- RADII ---------- */
+  /* Logo uses prominent rounded corners — the "highlight box" nods to it. */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;            /* logo-style rounded blocks */
+  --radius-pill: 999px;
+
+  /* ---------- ELEVATION ---------- */
+  /* Restrained — guidelines explicitly avoid drop shadows on logo;
+     UI elevation is subtle and blue-tinted. */
+  --shadow-1: 0 1px 2px rgba(0, 7, 89, 0.06), 0 1px 1px rgba(0, 7, 89, 0.04);
+  --shadow-2: 0 4px 12px rgba(0, 7, 89, 0.08), 0 1px 2px rgba(0, 7, 89, 0.04);
+  --shadow-3: 0 12px 28px rgba(0, 7, 89, 0.12), 0 2px 6px rgba(0, 7, 89, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(28, 84, 244, 0.32);
+
+  /* ---------- MOTION ---------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);  /* @kind other */
+  --ease-emphasis: cubic-bezier(0.3, 0, 0, 1);  /* @kind other */
+  --dur-fast: 120ms;     /* @kind other */
+  --dur-normal: 200ms;   /* @kind other */
+  --dur-slow: 320ms;     /* @kind other */
+}
+
+/* =========================================================
+   Base reset-ish
+   ========================================================= */
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   Type hierarchy — matches brand spec
+   Document/Section Heading: Open Sans Bold, ALL CAPS, +100–175 tracking
+   Headline: Open Sans Light
+   Subhead: Merriweather Regular
+   Body: Open Sans Regular
+   Body CTA: Open Sans Bold
+   ========================================================= */
+
+.eyebrow,
+.section-heading {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-x-wide);
+  font-size: var(--fs-eyebrow);
+  color: var(--col-dark-blue);
+}
+
+h1, .h1, .display {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--col-deep-blue);
+  margin: 0 0 var(--space-6);
+}
+
+h2, .h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  color: var(--col-deep-blue);
+  margin: 0 0 var(--space-5);
+}
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  color: var(--col-deep-blue);
+  margin: 0 0 var(--space-4);
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--col-deep-blue);
+  margin: 0 0 var(--space-3);
+}
+
+h5, .h5 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h5);
+  line-height: var(--lh-snug);
+  color: var(--col-deep-blue-grey);
+  margin: 0 0 var(--space-2);
+}
+
+/* Subhead — Merriweather Regular paired with Open Sans Semibold */
+.subhead {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--col-deep-blue-grey);
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  margin: 0 0 var(--space-4);
+  text-wrap: pretty;
+}
+
+.body-cta {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--col-deep-blue);
+}
+
+/* Pull quote — Merriweather */
+.pullquote {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  color: var(--col-deep-blue);
+  letter-spacing: var(--tracking-tight);
+}
+
+small, .small, .caption {
+  font-size: var(--fs-small);
+  color: var(--col-dark-blue-grey);
+  line-height: var(--lh-normal);
+}
+
+.micro {
+  font-size: var(--fs-micro);
+  color: var(--col-dark-blue-grey);
+  line-height: var(--lh-normal);
+}
+
+/* Headline highlight — "nod to the rounded corners of the logo".
+   Medium Blue preferred for digital. White text inside. */
+.highlight-box {
+  background: var(--col-medium-blue);
+  color: var(--col-white);
+  padding: 0.05em 0.35em;
+  border-radius: var(--radius-md);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Color underscore (brand-approved emphasis) */
+.color-underscore {
+  background-image: linear-gradient(var(--col-medium-blue), var(--col-medium-blue));
+  background-size: 100% 0.12em;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 0.05em;
+}
+
+/* Links */
+a {
+  color: var(--fg-link);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+a:hover { color: var(--fg-link-hover); }
