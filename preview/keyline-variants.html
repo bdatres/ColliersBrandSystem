@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Keyline — frame variants" subtitle="Six approved keyline modes" viewport="760x420" -->
+<html><head><meta charset="utf-8"><title>Keyline — seven options</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stage { position: relative; height: 120px; background: #fff; border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; box-sizing: border-box; }
+  .lbl { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 300 15px/1.1 var(--font-sans); color: var(--col-deep-blue); text-align: center; }
+  .k { position: absolute; background: var(--col-medium-blue); }
+  .cap { font: 700 9px/1.3 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--col-dark-blue-grey); margin-top: 8px; text-align: center; }
+
+  /* Framed */
+  .v1 .k.f { inset: 12px; border: 1.5px solid var(--col-medium-blue); background: none; }
+  /* Left-aligned: left + bottom */
+  .v2 .l { left: 12px; top: 12px; bottom: 12px; width: 1.5px; }
+  .v2 .b { left: 12px; bottom: 12px; right: 12px; height: 1.5px; }
+  /* Right-aligned: right + top */
+  .v3 .r { right: 12px; top: 12px; bottom: 12px; width: 1.5px; }
+  .v3 .t { left: 12px; top: 12px; right: 12px; height: 1.5px; }
+  /* Encompassing: left + top + bottom */
+  .v4 .l { left: 12px; top: 12px; bottom: 12px; width: 1.5px; }
+  .v4 .t { left: 12px; top: 12px; right: 12px; height: 1.5px; }
+  .v4 .b { left: 12px; bottom: 12px; right: 12px; height: 1.5px; }
+  /* Extending: header + line, line vertically centered to the type */
+  .v5 .ehrow { position: absolute; left: 14px; right: 14px; top: 16px; display: flex; align-items: center; gap: 6px; }
+  .v5 .ehrow span { font: 700 7px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--col-dark-blue); white-space: nowrap; }
+  .v5 .ehrow .e { flex: 1; height: 1.5px; background: var(--col-medium-blue); }
+  /* Organizing: single mid rule */
+  .v6 .o { left: 28px; right: 28px; top: 50%; height: 1.5px; }
+  /* Connecting: short vertical in upper area, never crossing the label */
+  .v7 .c { left: 50%; top: 16px; height: 40px; width: 1.5px; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Keyline · seven options</p>
+  <div class="grid">
+    <div><div class="stage v1"><div class="k f"></div><div class="lbl">Framed</div></div><div class="cap">Framed</div></div>
+    <div><div class="stage v2"><div class="k l"></div><div class="k b"></div><div class="lbl">Left</div></div><div class="cap">Left-aligned</div></div>
+    <div><div class="stage v3"><div class="k r"></div><div class="k t"></div><div class="lbl">Right</div></div><div class="cap">Right-aligned</div></div>
+    <div><div class="stage v4"><div class="k l"></div><div class="k t"></div><div class="k b"></div><div class="lbl">Encompass</div></div><div class="cap">Encompassing</div></div>
+    <div><div class="stage v5"><div class="ehrow"><span>Section header</span><div class="e"></div></div><div class="lbl" style="top:56%;">Extending</div></div><div class="cap">Extending</div></div>
+    <div><div class="stage v6"><div class="k o"></div><div class="lbl" style="top:32%;">Organizing</div></div><div class="cap">Organizing</div></div>
+    <div><div class="stage v7"><div class="k c"></div><div class="lbl" style="top:70%;">Connecting</div></div><div class="cap">Connecting</div></div>
+    <div style="display:flex;align-items:center;"><p style="margin:0;font:400 11px/1.45 var(--font-sans);color:var(--col-dark-blue-grey);">Pick the keyline that best complements the photography and typesetting.</p></div>
+  </div>
+  <p class="card-sub">Best colors are the three darker blues — Deep, Dark, Medium. Light Blue only on very light images where contrast is sufficient.</p>
+</div></body></html>

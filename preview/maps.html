@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Maps" subtitle="Coverage & location maps" viewport="760x380" -->
+<html><head><meta charset="utf-8"><title>Maps</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .map-title { font: 700 9px/1.2 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--col-dark-blue-grey); margin: 0 0 10px; }
+  .frame { border: 1px solid var(--divider); border-radius: 10px; overflow: hidden; background: #fff; }
+  .land { stroke-width: .5; }
+  .office { font: 700 5px/1 var(--font-sans); fill: var(--col-deep-blue); }
+  .combos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 6px; }
+  .combo { display: flex; align-items: center; gap: 8px; font: 400 11px/1.2 var(--font-sans); color: var(--col-deep-blue-grey); }
+  .combo .sw { width: 22px; height: 16px; border-radius: 3px; border: 1px solid var(--divider); flex: none; }
+  .cap { font: 400 11px/1.45 var(--font-sans); color: var(--col-dark-blue-grey); margin-top: 8px; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Maps · minimal, yellow dots mark offices</p>
+  <div class="grid">
+    <div>
+      <p class="map-title">Coverage — sub-region tints</p>
+      <div class="frame">
+        <svg viewBox="0 0 220 150" width="100%" height="150">
+          <rect width="220" height="150" fill="#fff"/>
+          <!-- abstract regions in primary-blue tints -->
+          <path d="M10 20 L95 12 L110 60 L60 80 L20 70 Z"   fill="#25408F" stroke="#1a2f6b" class="land"/>
+          <path d="M95 12 L180 22 L175 70 L110 60 Z"         fill="#7aa0e0" stroke="#25408F" class="land"/>
+          <path d="M60 80 L110 60 L175 70 L165 120 L80 132 Z" fill="#ACBBE8" stroke="#25408F" class="land"/>
+          <path d="M20 70 L60 80 L80 132 L25 128 Z"           fill="#DBE5FF" stroke="#25408F" class="land"/>
+          <!-- office dots (always yellow, deep-blue stroke) -->
+          <circle cx="55" cy="45" r="6" fill="#FFD400" stroke="#000759" stroke-width="1"/>
+          <text class="office" x="55" y="47" text-anchor="middle">8</text>
+          <circle cx="135" cy="44" r="6" fill="#FFD400" stroke="#000759" stroke-width="1"/>
+          <text class="office" x="135" y="46" text-anchor="middle">5</text>
+          <circle cx="115" cy="100" r="6" fill="#FFD400" stroke="#000759" stroke-width="1"/>
+          <text class="office" x="115" y="102" text-anchor="middle">3</text>
+        </svg>
+      </div>
+      <p class="cap">Tints of one primary blue (100 → 10%) separate regions. Office count dots are always yellow with a Deep Blue stroke, labelled in 5pt Open Sans Bold.</p>
+    </div>
+    <div>
+      <p class="map-title">Approved coverage combinations</p>
+      <div class="combos">
+        <div class="combo"><span class="sw" style="background:#DBE5FF"></span>Pale Blue Grey / White</div>
+        <div class="combo"><span class="sw" style="background:#CCCDD5"></span>Grey / White</div>
+        <div class="combo"><span class="sw" style="background:#ACBBE8"></span>Light Blue Grey / White</div>
+        <div class="combo"><span class="sw" style="background:#ACBBE8;border-color:#DBE5FF;box-shadow:inset 0 0 0 2px #DBE5FF"></span>Lt Blue Grey / Pale</div>
+      </div>
+      <p class="map-title" style="margin-top:18px;">Property location — amenity icons</p>
+      <div class="frame">
+        <svg viewBox="0 0 220 96" width="100%" height="96">
+          <rect width="220" height="96" fill="#fff"/>
+          <!-- streets -->
+          <path d="M0 50 H220 M70 0 V96 M150 0 V96" stroke="#DBE5FF" stroke-width="3" fill="none"/>
+          <!-- subject building -->
+          <rect x="100" y="38" width="22" height="22" rx="3" fill="#1C54F4"/>
+          <!-- amenity pins (single-color outline icons) -->
+          <g stroke="#25408F" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="40" cy="28" r="8"/><path d="M37 28h6M40 25v6"/>
+            <circle cx="180" cy="30" r="8"/><path d="M176 30c0-3 8-3 8 0M177 33h6"/>
+            <circle cx="50" cy="74" r="8"/><path d="M47 71v6h6M47 74h6"/>
+            <circle cx="175" cy="72" r="8"/><path d="M171 72l4-4 4 4-4 4z"/>
+          </g>
+        </svg>
+      </div>
+      <p class="cap">Faint streets (0.25pt at 50% landmass tint), the subject building highlighted, and simple single-color outline icons for amenity types.</p>
+    </div>
+  </div>
+</div></body></html>

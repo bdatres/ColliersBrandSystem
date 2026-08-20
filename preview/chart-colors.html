@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- @dsCard group="Colors" name="Chart color priority" subtitle="Primary-first sequence + red caveat" viewport="760x420" -->
+<html><head><meta charset="utf-8"><title>Chart color priority</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .seq { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .chip { border-radius: 10px; padding: 10px 12px; height: 78px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; border: 1px solid rgba(0,7,89,.06); }
+  .chip .ord { font: 700 9px/1 var(--font-sans); opacity: .7; }
+  .chip .n { font: 700 11px/1.2 var(--font-sans); }
+  .chip.dk { color: var(--col-deep-blue); }
+  .tints { margin-top: 18px; }
+  .tint-row { display: flex; border-radius: 8px; overflow: hidden; border: 1px solid var(--divider); }
+  .tint-row div { flex: 1; height: 36px; display: flex; align-items: center; justify-content: center; font: 700 9px/1 var(--font-sans); color: #fff; }
+  .tint-row div.dk { color: var(--col-deep-blue); }
+  .red-note { display: flex; gap: 12px; align-items: flex-start; margin-top: 18px; padding: 12px 14px; border-radius: 10px; background: rgba(237,27,52,.06); border: 1px solid rgba(237,27,52,.2); }
+  .red-note i { width: 14px; height: 14px; border-radius: 3px; background: var(--col-red); flex: none; margin-top: 2px; }
+  .red-note p { margin: 0; font: 400 12px/1.45 var(--font-sans); color: var(--col-deep-blue-grey); }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Chart color priority</p>
+  <div class="seq">
+    <div class="chip" style="background:#000759"><span class="ord">01</span><span class="n">Deep Blue</span></div>
+    <div class="chip" style="background:#25408F"><span class="ord">02</span><span class="n">Dark Blue</span></div>
+    <div class="chip" style="background:#1C54F4"><span class="ord">03</span><span class="n">Medium Blue</span></div>
+    <div class="chip" style="background:#4D93FF"><span class="ord">04</span><span class="n">Light Blue</span></div>
+    <div class="chip dk" style="background:#C3E6FF"><span class="ord">05</span><span class="n">Pale Blue</span></div>
+  </div>
+  <div class="tints">
+    <p class="card-sub" style="margin:0 0 8px;">Then differentiate with tints — 80 / 60 / 40 / 20 / 10%</p>
+    <div class="tint-row">
+      <div style="background:#1C54F4">100</div>
+      <div style="background:#4978f6">80</div>
+      <div style="background:#769bf9">60</div>
+      <div style="background:#a4bdfb" class="dk">40</div>
+      <div style="background:#d1defd" class="dk">20</div>
+      <div style="background:#e8eefe" class="dk">10</div>
+    </div>
+  </div>
+  <div class="red-note">
+    <i></i>
+    <p><b>Red is reserved for decline.</b> Because Colliers Red reads as a negative trend, only use it for data that genuinely represents a drop or a warning — never as a general accent.</p>
+  </div>
+  <p class="card-sub">Use the primary palette first, in order. Expand into secondary and tertiary hues only when a series needs more differentiation than the blues + tints can provide.</p>
+</div></body></html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Block — single" subtitle="Anchored vs. floating" viewport="760x320" -->
+<html><head><meta charset="utf-8"><title>Block — single anchored</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .stage { position: relative; height: 220px; background: #fff; border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; box-sizing: border-box; }
+  .block { position: absolute; bottom: 0; left: 0; width: 64%; height: 78%; background: var(--col-deep-blue); border-radius: 0 20px 0 0; }
+  .text { position: absolute; left: 28px; bottom: 24px; color: #fff; font: 300 26px/1.1 var(--font-sans); max-width: 56%; }
+  .text b { font-weight: 600; color: var(--col-pale-blue); }
+  .legend { position: absolute; right: 16px; top: 16px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; font: 700 9px/1 var(--font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--col-dark-blue-grey); }
+  .legend i { display: inline-block; width: 8px; height: 8px; background: var(--col-deep-blue); border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .float .block { left: 14%; bottom: 10%; width: 56%; height: 64%; border-radius: 20px; }
+  .float .text { left: calc(14% + 28px); bottom: calc(10% + 24px); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cap { font: 400 11px/1.45 var(--font-sans); color: var(--col-dark-blue-grey); margin-top: 8px; text-align: center; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Block — single, anchored or floating</p>
+  <div class="row">
+    <div>
+      <div class="stage">
+        <div class="block"></div>
+        <div class="text">We <b>invest</b> in relationships.</div>
+        <div class="legend"><span><i></i>Anchored</span></div>
+      </div>
+      <div class="cap">Anchored to a corner / edge of the canvas.</div>
+    </div>
+    <div>
+      <div class="stage float">
+        <div class="block"></div>
+        <div class="text">We <b>invest</b> in relationships.</div>
+        <div class="legend"><span><i></i>Floating</span></div>
+      </div>
+      <div class="cap">Floating freely with margin on all sides.</div>
+    </div>
+  </div>
+  <p class="card-sub">A single primary-blue block can either be anchored to an edge or float freely. Round only the corners that face the canvas interior — a nod to the logo geometry.</p>
+</div></body></html>

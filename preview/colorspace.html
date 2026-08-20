@@ -1,0 +1,79 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Colorspace" subtitle="RGB · CMYK · Pantone · balance" viewport="760x900" -->
+<html><head><meta charset="utf-8"><title>Colorspace</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .sub { font: 700 11px/1.2 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--col-dark-blue); margin: 22px 0 6px; }
+  .sub:first-of-type { margin-top: 0; }
+  .tag { font: 400 10px/1 var(--font-sans); color: var(--col-dark-blue-grey); letter-spacing: .06em; text-transform: uppercase; }
+  p.body-sm { font: 400 12.5px/1.55 var(--font-sans); color: var(--col-deep-blue-grey); margin: 4px 0 10px; max-width: 66ch; }
+  .swrow { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; margin: 6px 0 2px; }
+  .sw { height: 46px; border-radius: 3px; }
+  .rowlbl { font: 700 9px/1 var(--font-sans); color: var(--col-dark-blue-grey); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+  ul.plain { margin: 4px 0 10px; padding-left: 18px; font: 400 12.5px/1.6 var(--font-sans); color: var(--col-deep-blue-grey); }
+  .nest { width: 92px; height: 92px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+  .nest .n2 { width: 68%; height: 68%; display: flex; align-items: center; justify-content: center; border-radius: 3px; }
+  .nest .n3 { width: 58%; height: 58%; border-radius: 2px; }
+  .balrow { display: flex; gap: 20px; align-items: flex-start; }
+  .balcol { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .balcol span { font: 700 10px/1.2 var(--font-sans); color: var(--col-dark-blue-grey); }
+  .balcol span.ok { color: var(--col-medium-blue); }
+  .balcol span.bad { color: var(--col-red); }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Colorspace</p>
+
+  <p class="sub">RGB · Digital</p>
+  <p class="body-sm">As we work in a digital-first environment, most materials are interacted with on a computer, tablet or smartphone — so the majority of branded collateral is created in the RGB colorspace.</p>
+  <ul class="plain">
+    <li>MS Office products</li>
+    <li>Social media</li>
+    <li>Web design</li>
+    <li>Digital advertising</li>
+    <li>Video &amp; motion design</li>
+    <li>Documents (incl. brochures &amp; reports) intended primarily for online viewing</li>
+    <li>Day-to-day color laser printing in offices or in the field</li>
+  </ul>
+
+  <p class="sub">CMYK · Print</p>
+  <p class="body-sm">Four-color process is mainly reserved for outsourced professional printing. RGB and CMYK are never an exact conversion, but our CMYK palette is formulated as a nearest-neighbour to the RGB palette to keep chromatic harmony across printed communications. The most significant shift is in the saturated Medium Blue — use it carefully when designing exclusively for print.</p>
+  <div class="rowlbl">RGB</div>
+  <div class="swrow">
+    <div class="sw" style="background:#000759"></div><div class="sw" style="background:#25408F"></div><div class="sw" style="background:#1C54F4"></div><div class="sw" style="background:#4D93FF"></div><div class="sw" style="background:#C3E6FF"></div>
+    <div class="sw" style="background:#353E59"></div><div class="sw" style="background:#56648F"></div><div class="sw" style="background:#7B8BBD"></div><div class="sw" style="background:#ACBBE8"></div><div class="sw" style="background:#DBE5FF"></div>
+  </div>
+  <div class="rowlbl">CMYK (nearest-neighbour)</div>
+  <div class="swrow">
+    <div class="sw" style="background:#170F3E"></div><div class="sw" style="background:#2E4581"></div><div class="sw" style="background:#4C6DA8"></div><div class="sw" style="background:#7093C0"></div><div class="sw" style="background:#C9E2F2"></div>
+    <div class="sw" style="background:#333D55"></div><div class="sw" style="background:#4F5D85"></div><div class="sw" style="background:#7181AC"></div><div class="sw" style="background:#9CACD6"></div><div class="sw" style="background:#DDE3F5"></div>
+  </div>
+  <p class="body-sm" style="margin-top:10px;">Top row is RGB, bottom is its CMYK equivalent — note the largest shift on Medium Blue (col. 3).</p>
+
+  <p class="sub">Pantone</p>
+  <p class="body-sm">Spot-color inks from the Pantone Matching System are reserved for high-end, executive-level representation of the Colliers logo only — business cards, stationery, folder covers and annual reports.</p>
+
+  <p class="sub">Color balance</p>
+  <p class="body-sm">Select one primary blue to dominate the design, using the remaining colors (including white) to balance the composition. Highly saturated colors like Medium Blue need more white or light colors to balance. Without a dominant color, or in the absence of white/light colors, a composition reads heavy with little visual contrast.</p>
+  <div class="balrow">
+    <div class="balcol">
+      <div class="nest" style="background:#C3E6FF"><div class="n2" style="background:#1C54F4"><div class="n3" style="background:#000759"></div></div></div>
+      <span class="ok">✓ Balanced</span>
+    </div>
+    <div class="balcol">
+      <div class="nest" style="background:#DBE5FF"><div class="n2" style="background:#000759"><div class="n3" style="background:#fff"></div></div></div>
+      <span class="ok">✓ Balanced</span>
+    </div>
+    <div class="balcol">
+      <div class="nest" style="background:#25408F"><div class="n2" style="background:#4D93FF"><div class="n3" style="background:#DBE5FF"></div></div></div>
+      <span class="ok">✓ Balanced</span>
+    </div>
+    <div class="balcol">
+      <div class="nest" style="background:#7B8BBD"><div class="n2" style="background:#25408F"><div class="n3" style="background:#4D93FF"></div></div></div>
+      <span class="bad">✗ No dominant color</span>
+    </div>
+    <div class="balcol">
+      <div class="nest" style="background:#1C54F4"><div class="n2" style="background:#000759"><div class="n3" style="background:#1C54F4"></div></div></div>
+      <span class="bad">✗ Too heavy, no contrast</span>
+    </div>
+  </div>
+</div></body></html>

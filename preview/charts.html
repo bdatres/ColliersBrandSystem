@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Charts" subtitle="Minimalist bar & donut" viewport="760x380" -->
+<html><head><meta charset="utf-8"><title>Charts</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  .chart-title { font: 700 9px/1.2 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--col-dark-blue-grey); margin: 0 0 14px; }
+  .axis { font: 700 8px/1 var(--font-sans); letter-spacing: .08em; text-transform: uppercase; fill: var(--col-dark-blue-grey); }
+  .val { font: 700 9px/1 var(--font-sans); fill: var(--col-deep-blue); }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 14px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; font: 400 11px/1 var(--font-sans); color: var(--col-deep-blue-grey); }
+  .legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Charts · minimalist, primary-blue first</p>
+  <div class="grid">
+    <div>
+      <p class="chart-title">Bar — investment volume ($B)</p>
+      <svg viewBox="0 0 260 150" width="100%" height="150">
+        <!-- baseline -->
+        <line x1="34" y1="124" x2="252" y2="124" stroke="#DBE5FF" stroke-width="1"/>
+        <!-- bars, Deep -> Dark -> Medium -> Light -> Pale -->
+        <rect x="44"  y="44"  width="30" height="80" rx="2" fill="#000759"/>
+        <rect x="86"  y="60"  width="30" height="64" rx="2" fill="#25408F"/>
+        <rect x="128" y="38"  width="30" height="86" rx="2" fill="#1C54F4"/>
+        <rect x="170" y="74"  width="30" height="50" rx="2" fill="#4D93FF"/>
+        <rect x="212" y="92"  width="30" height="32" rx="2" fill="#C3E6FF"/>
+        <text class="val" x="59"  y="38"  text-anchor="middle">4.1</text>
+        <text class="val" x="101" y="54"  text-anchor="middle">3.2</text>
+        <text class="val" x="143" y="32"  text-anchor="middle">4.4</text>
+        <text class="val" x="185" y="68"  text-anchor="middle">2.5</text>
+        <text class="val" x="227" y="86"  text-anchor="middle">1.6</text>
+        <text class="axis" x="59"  y="138" text-anchor="middle">'22</text>
+        <text class="axis" x="101" y="138" text-anchor="middle">'23</text>
+        <text class="axis" x="143" y="138" text-anchor="middle">'24</text>
+        <text class="axis" x="185" y="138" text-anchor="middle">'25</text>
+        <text class="axis" x="227" y="138" text-anchor="middle">'26</text>
+      </svg>
+    </div>
+    <div>
+      <p class="chart-title">Donut — capital by sector</p>
+      <svg viewBox="0 0 150 150" width="150" height="150" style="display:block;margin:0 auto;">
+        <g transform="translate(75,75)">
+          <!-- circumference ~ 408.4 (r=65, sw=22) -->
+          <circle r="54" fill="none" stroke="#000759" stroke-width="22" stroke-dasharray="119 220" transform="rotate(-90)"/>
+          <circle r="54" fill="none" stroke="#1C54F4" stroke-width="22" stroke-dasharray="85 254" stroke-dashoffset="-119" transform="rotate(-90)"/>
+          <circle r="54" fill="none" stroke="#4D93FF" stroke-width="22" stroke-dasharray="68 271" stroke-dashoffset="-204" transform="rotate(-90)"/>
+          <circle r="54" fill="none" stroke="#C3E6FF" stroke-width="22" stroke-dasharray="67 272" stroke-dashoffset="-272" transform="rotate(-90)"/>
+        </g>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#000759"></i>Office 35%</span>
+        <span><i style="background:#1C54F4"></i>Industrial 25%</span>
+        <span><i style="background:#4D93FF"></i>Retail 20%</span>
+        <span><i style="background:#C3E6FF"></i>Multifamily 20%</span>
+      </div>
+    </div>
+  </div>
+  <p class="card-sub">Strip everything non-essential. Labels in all-caps Open Sans Bold, +50 tracking. Sequence colors by the primary priority order before expanding into tints or tertiary hues.</p>
+</div></body></html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Headline emphasis" subtitle="Color, weight, underscore, highlight box" viewport="700x320" -->
+<html><head><meta charset="utf-8"><title>Headline emphasis</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { padding: 14px 0; border-bottom: 1px dashed rgba(53,62,89,0.18); }
+  .row:last-child { border-bottom: 0; }
+  .lbl { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--col-dark-blue-grey); display: block; margin-bottom: 6px; }
+  .h { font: 300 28px/1.2 "Open Sans", Verdana; color: var(--col-deep-blue-grey); letter-spacing: -0.005em; }
+  .colorbright { color: var(--col-medium-blue); }
+  .weight { font-weight: 600; color: var(--col-deep-blue); }
+  .underscore {
+    background-image: linear-gradient(var(--col-medium-blue), var(--col-medium-blue));
+    background-size: 100% 0.12em;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    color: var(--col-deep-blue);
+  }
+  .highlight {
+    background: var(--col-medium-blue);
+    color: #fff;
+    padding: 0.05em 0.32em;
+    border-radius: 8px;
+  }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Headline emphasis · pick one per sentence</p>
+  <div class="row"><span class="lbl">Color shift</span><div class="h">We accelerate <span class="colorbright">success</span>.</div></div>
+  <div class="row"><span class="lbl">Weight shift</span><div class="h">Be <span class="weight">enterprising</span> to exceed expectations.</div></div>
+  <div class="row"><span class="lbl">Color underscore</span><div class="h">Built on <span class="underscore">enduring value</span>.</div></div>
+  <div class="row"><span class="lbl">Highlight box · echoes the logo</span><div class="h">Your <span class="highlight">success</span> is our success.</div></div>
+</div></body></html>

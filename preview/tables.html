@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Tables" subtitle="Clean data table" viewport="760x320" -->
+<html><head><meta charset="utf-8"><title>Tables</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .tbl { width: 100%; border-collapse: collapse; font-family: var(--font-sans); }
+  .tbl caption { text-align: left; font: 700 13px/1 var(--font-sans); letter-spacing: .04em; color: var(--col-deep-blue); margin-bottom: 12px; }
+  .tbl thead th { background: var(--col-dark-blue); color: #fff; font: 700 9px/1.2 var(--font-sans); letter-spacing: .08em; text-transform: uppercase; padding: 9px 12px; text-align: left; }
+  .tbl thead th.num { text-align: right; }
+  .tbl tbody td { font: 400 12px/1.3 var(--font-sans); color: var(--col-deep-blue-grey); padding: 8px 12px; border-bottom: 0.5px solid var(--divider); }
+  .tbl tbody td.num { text-align: right; font-variant-numeric: tabular-nums; color: var(--col-dark-blue); }
+  .tbl tbody td.ctr { text-align: center; font-variant-numeric: tabular-nums; }
+  .tbl tbody tr:nth-child(even) td { background: rgba(195, 230, 255, 0.4); }   /* Extra Light Blue @ 40% */
+  .tbl tbody tr:last-child td { border-bottom: 0; }
+  .tbl tfoot td { font-family: var(--font-condensed); font-size: 10px; color: var(--col-dark-blue-grey); padding: 8px 12px 0; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Table · clean, primary + secondary only</p>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>Market</th>
+        <th class="num">Avg. asking rent</th>
+        <th class="num">Vacancy</th>
+        <th class="num">YoY change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Toronto</td><td class="num">$38.50</td><td class="ctr">9.8%</td><td class="num">+2.4%</td></tr>
+      <tr><td>Vancouver</td><td class="num">$41.20</td><td class="ctr">7.2%</td><td class="num">+1.1%</td></tr>
+      <tr><td>Montréal</td><td class="num">$26.75</td><td class="ctr">12.4%</td><td class="num">−0.6%</td></tr>
+      <tr><td>Calgary</td><td class="num">$24.10</td><td class="ctr">18.1%</td><td class="num">+3.8%</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="4">Source: Colliers Research, Q2 2026. Rents in CAD per sf, net. Footnotes set in Open Sans Condensed.</td></tr>
+    </tfoot>
+  </table>
+  <p class="card-sub">Dark Blue header, 0.5pt dividers with alternating Pale Blue rows @ 40%. Copy left-aligned, decimals right-aligned, decimal-free figures centerd. All-caps headers in Open Sans Bold, +50 tracking.</p>
+</div></body></html>

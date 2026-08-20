@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Badges & tags" subtitle="Caps badges + filter pills" viewport="700x220" -->
+<html><head><meta charset="utf-8"><title>Badges &amp; tags</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px 0 14px; }
+  .badge {
+    font: 700 10px/1 "Open Sans";
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+  .b-deep   { background: #000759; color: #fff; }
+  .b-dark   { background: #25408F; color: #fff; }
+  .b-med    { background: #1C54F4; color: #fff; }
+  .b-pale   { background: #DBE5FF; color: #25408F; }
+  .b-paleblue{ background: #C3E6FF; color: #000759; }
+  .b-outline{ background: #fff; color: #25408F; border: 1px solid #25408F; }
+  .pill {
+    font: 600 11px/1 "Open Sans";
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #DBE5FF;
+    color: var(--col-deep-blue);
+  }
+  .pill.med { background: var(--col-medium-blue); color: #fff; }
+  .pill.outline { background: #fff; border: 1px solid rgba(53,62,89,0.24); color: var(--col-deep-blue-grey); }
+  .label { font: 700 9px/1 "Open Sans"; text-transform: uppercase; letter-spacing: 0.16em; color: var(--col-dark-blue-grey); margin-bottom: 6px; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Badges &amp; tags</p>
+  <div class="label">Caps badges · sectioning</div>
+  <div class="row">
+    <span class="badge b-deep">FOR LEASE</span>
+    <span class="badge b-dark">SOLD</span>
+    <span class="badge b-med">NEW</span>
+    <span class="badge b-pale">UNDER OFFER</span>
+    <span class="badge b-paleblue">COMING SOON</span>
+    <span class="badge b-outline">OFF-MARKET</span>
+  </div>
+  <div class="label" style="margin-top:8px">Filter pills</div>
+  <div class="row">
+    <span class="pill med">Office</span>
+    <span class="pill">Industrial</span>
+    <span class="pill">Retail</span>
+    <span class="pill outline">Multifamily</span>
+    <span class="pill outline">Hotels</span>
+  </div>
+</div></body></html>

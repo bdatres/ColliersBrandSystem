@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Keyline gradient" subtitle="Highlight frame & extending highlight" viewport="760x340" -->
+<html><head><meta charset="utf-8"><title>Keyline gradient</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stage { position: relative; height: 200px; border-radius: 8px; overflow: hidden; box-sizing: border-box; padding: 18px; }
+  .photo { background: linear-gradient(135deg, #1a2547 0%, #0a1230 60%, #060a1f 100%); }
+  .solid-dark { background: var(--col-dark-blue); }
+  .head { position: absolute; left: 36px; top: 50%; transform: translateY(-50%); font: 300 22px/1.15 var(--font-sans); color: #fff; max-width: 70%; }
+  .tag { position: absolute; right: 30px; bottom: 18px; font: 400 11px/1 var(--font-sans); color: var(--col-pale-blue-grey); }
+
+  /* Highlight gradient — full frame, gradient on top edge */
+  .frame-grad { position: absolute; inset: 14px; border-radius: 4px;
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--col-dark-blue), var(--col-dark-blue)) padding-box,
+      linear-gradient(180deg, var(--col-pale-blue-grey) 0%, var(--col-medium-blue) 30%, var(--col-medium-blue) 100%) border-box;
+    /* simulate gradient frame using two backgrounds; fallback to outline */
+  }
+  /* Simpler approach: use 4 absolute lines */
+  .frame-grad { background: none; border: none; }
+  .frame-grad::before, .frame-grad::after,
+  .frame-grad > .l, .frame-grad > .r {
+    content: ""; position: absolute;
+  }
+  .frame-grad::before { left: 0; right: 0; top: 0; height: 1.5px;
+    background: linear-gradient(90deg, var(--col-medium-blue) 0%, var(--col-pale-blue-grey) 30%, var(--col-medium-blue) 70%, var(--col-medium-blue) 100%); }
+  .frame-grad::after  { left: 0; right: 0; bottom: 0; height: 1.5px; background: var(--col-medium-blue); }
+  .frame-grad > .l    { left: 0; top: 0; bottom: 0; width: 1.5px; background: var(--col-medium-blue); }
+  .frame-grad > .r    { right: 0; top: 0; bottom: 0; width: 1.5px; background: var(--col-medium-blue); }
+
+  /* Extending highlight — single line, dark → pale */
+  .ext { position: absolute; left: 0; right: 24px; bottom: 36px; height: 1.5px;
+    background: linear-gradient(90deg, var(--col-light-blue) 0%, var(--col-light-blue) 60%, var(--col-pale-blue-grey) 100%); }
+
+  .cap { font: 400 11px/1.45 var(--font-sans); color: var(--col-dark-blue-grey); margin-top: 8px; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Keyline gradient — highlight &amp; extending</p>
+  <div class="grid">
+    <div>
+      <div class="stage photo">
+        <div class="frame-grad"><span class="l"></span><span class="r"></span></div>
+        <div class="head">Lead with <span style="color:var(--col-pale-blue);font-weight:600;">expertise</span>.</div>
+        <div class="tag">Accelerating success.</div>
+      </div>
+      <div class="cap"><b>Highlight gradient frame</b> — Medium Blue frame with a Pale Blue Grey highlight, ~20% from the top edge.</div>
+    </div>
+    <div>
+      <div class="stage solid-dark">
+        <div class="ext"></div>
+        <div class="head">Lead with <span style="color:var(--col-pale-blue);font-weight:600;">expertise</span>.</div>
+        <div class="tag">Accelerating success.</div>
+      </div>
+      <div class="cap"><b>Extending highlight</b> — Light Blue line transitions to Pale Blue Grey toward the canvas edge. Pairs with the tagline.</div>
+    </div>
+  </div>
+  <p class="card-sub">Gradients are reserved for keylines. Always pair a darker primary blue with Pale Blue Grey or White as the lightest stop. Smooth transitions between 20% and 60%.</p>
+</div></body></html>

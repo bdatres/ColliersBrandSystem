@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- @dsCard group="Reference" name="Block + keyline — composed (optional)" subtitle="Situational — use where it fits, not a core pattern" viewport="760x360" -->
+<html><head><meta charset="utf-8"><title>Blocks + keyline</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .intro { font: 400 13px/1.55 var(--font-sans); color: var(--col-deep-blue-grey); max-width: 64ch; margin: 0 0 22px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .stage { position: relative; height: 160px; border-radius: 8px; overflow: hidden; box-sizing: border-box; border: 1px solid var(--divider); background: #fff; }
+  .sublabel { font: 700 11px/1.2 var(--font-sans); color: var(--col-deep-blue); margin: 12px 0 4px; }
+  .cap { font: 400 11px/1.45 var(--font-sans); color: var(--col-dark-blue-grey); margin: 0; }
+  .ln { position: absolute; }
+
+  /* ---- Overlapping: light-blue keyline overlaps a medium-blue block on deep blue ---- */
+  .ov { background: var(--col-deep-blue); border-color: transparent; }
+  .ov .block { position: absolute; left: 0; top: 16%; width: 54%; height: 58%; background: var(--col-medium-blue); }
+  .ov .k-v { left: 8%; top: 8px; bottom: 8px; width: 1.5px; background: var(--col-light-blue); }
+  .ov .k-b { left: 8%; right: 8px; bottom: 8px; height: 1.5px; background: var(--col-light-blue); }
+
+  /* ---- Gap space: a left-aligned keyline that BREAKS around the block it overlaps ---- */
+  .gap .block { position: absolute; left: 0; top: 22%; width: 52%; height: 42%; background: var(--col-medium-blue); }
+  .gap .k-top { left: 8%; top: 8px; height: 18px; width: 1.5px; background: var(--col-dark-blue); }          /* tick above block */
+  .gap .k-bot { left: 8%; top: calc(64% + 7px); bottom: 8px; width: 1.5px; background: var(--col-dark-blue); } /* resumes ½-margin below block */
+  .gap .k-b   { left: 8%; right: 8px; bottom: 8px; height: 1.5px; background: var(--col-dark-blue); }
+
+  /* ---- Frame color: one frame that switches color as it enters the dark block ---- */
+  .frm .block { position: absolute; left: 0; right: 0; bottom: 0; height: 36%; background: var(--col-deep-blue); }
+  /* navy frame on the white area (⊓) */
+  .frm .n-t { left: 8px; right: 8px; top: 8px; height: 1.5px; background: var(--col-deep-blue); }
+  .frm .n-l { left: 8px; top: 8px; height: calc(64% - 8px); width: 1.5px; background: var(--col-deep-blue); }
+  .frm .n-r { right: 8px; top: 8px; height: calc(64% - 8px); width: 1.5px; background: var(--col-deep-blue); }
+  /* white frame continuing across the dark block (⊔) */
+  .frm .w-l { left: 8px; top: 64%; bottom: 8px; width: 1.5px; background: #fff; }
+  .frm .w-r { right: 8px; top: 64%; bottom: 8px; width: 1.5px; background: #fff; }
+  .frm .w-b { left: 8px; right: 8px; bottom: 8px; height: 1.5px; background: #fff; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Blocks + keyline · how they interact <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--col-dark-blue-grey);">(optional — apply only where it fits the composition)</span></p>
+  <p class="intro">Blocks and keylines together define the main composition of our layouts, serving as branding elements that lead the viewer's attention to our messaging. This is a situational reference, not a required pattern — they interact in three core ways when used together.</p>
+  <div class="grid">
+    <div>
+      <div class="stage ov">
+        <div class="block"></div>
+        <div class="ln k-v"></div>
+        <div class="ln k-b"></div>
+      </div>
+      <p class="sublabel">Overlapping</p>
+      <p class="cap">A keyline can overlap a block, as long as it isn't the same color and tint as the overlapped block.</p>
+    </div>
+    <div>
+      <div class="stage gap">
+        <div class="block"></div>
+        <div class="ln k-top"></div>
+        <div class="ln k-bot"></div>
+        <div class="ln k-b"></div>
+      </div>
+      <p class="sublabel">Gap space</p>
+      <p class="cap">Keylines break before and after an overlapping block — the gap equals half the margin space for the keyline.</p>
+    </div>
+    <div>
+      <div class="stage frm">
+        <div class="block"></div>
+        <div class="ln n-t"></div>
+        <div class="ln n-l"></div>
+        <div class="ln n-r"></div>
+        <div class="ln w-l"></div>
+        <div class="ln w-r"></div>
+        <div class="ln w-b"></div>
+      </div>
+      <p class="sublabel">Frame color</p>
+      <p class="cap">The frame can be one color, or switch colors as it leads into a darker / lighter background or photo.</p>
+    </div>
+  </div>
+  <p class="card-sub"><b>Size &amp; orientation:</b> no firm rules on proportion — but when two blocks are used, one should be larger (≥ 3:1) and they must overlap. Single blocks can be anchored to an edge or float anywhere on the canvas.</p>
+</div></body></html>

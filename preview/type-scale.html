@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Type scale" subtitle="Display → caption" viewport="700x580" -->
+<html><head><meta charset="utf-8"><title>Type scale</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: 90px 1fr; gap: 18px; align-items: baseline; padding: 6px 0; border-bottom: 1px dashed rgba(53,62,89,0.18); }
+  .row:last-child { border-bottom: 0; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--col-dark-blue-grey); }
+  .l-display { font: 300 48px/1.05 "Open Sans", Verdana; color: var(--col-deep-blue); letter-spacing: -0.01em; }
+  .l-h1      { font: 300 36px/1.1 "Open Sans", Verdana; color: var(--col-deep-blue); }
+  .l-h2      { font: 300 28px/1.15 "Open Sans", Verdana; color: var(--col-deep-blue); }
+  .l-h3      { font: 600 22px/1.2 "Open Sans", Verdana; color: var(--col-deep-blue); }
+  .l-sub     { font: 400 18px/1.3 "Merriweather", Georgia; color: var(--col-deep-blue-grey); }
+  .l-body    { font: 400 16px/1.55 "Open Sans", Verdana; color: var(--col-deep-blue-grey); }
+  .l-small   { font: 400 13px/1.5 "Open Sans", Verdana; color: var(--col-dark-blue-grey); }
+  .hl-light  { font: 300 36px/1.1 "Merriweather", Georgia; color: var(--col-deep-blue); }
+  .hl-reg    { font: 400 36px/1.1 "Merriweather", Georgia; color: var(--col-deep-blue); }
+  .hl-disp   { font: 300 48px/1.05 "Merriweather", Georgia; color: var(--col-deep-blue); letter-spacing: -0.01em; }
+  .card-sub2 { font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: 10px; color: var(--col-dark-blue); margin: 22px 0 12px; }
+  .no { font-family: var(--font-sans); font-size: 11px; color: var(--col-dark-blue-grey); margin-top: 10px; line-height: 1.5; }
+  .no b { color: #ED1B34; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Type scale</p>
+  <div class="row"><span class="meta">48 · light</span><span class="l-display">Display headline</span></div>
+  <div class="row"><span class="meta">36 · light</span><span class="l-h1">Section headline</span></div>
+  <div class="row"><span class="meta">28 · light</span><span class="l-h2">Card headline</span></div>
+  <div class="row"><span class="meta">22 · semi</span><span class="l-h3">Subhead, semibold</span></div>
+  <div class="row"><span class="meta">18 · serif</span><span class="l-sub">Merriweather subhead</span></div>
+  <div class="row"><span class="meta">16 · regular</span><span class="l-body">Body copy at the default reading size.</span></div>
+  <div class="row"><span class="meta">13 · small</span><span class="l-small">Caption / metadata</span></div>
+
+  <p class="card-sub2">Headline options — Merriweather</p>
+  <div class="row"><span class="meta">48 · light</span><span class="hl-disp">A more authoritative display headline</span></div>
+  <div class="row"><span class="meta">36 · light</span><span class="hl-light">A more authoritative headline</span></div>
+  <div class="row"><span class="meta">36 · regular</span><span class="hl-reg">A more authoritative headline</span></div>
+  <p class="no">Merriweather can be used in headlines for a more authoritative tone — favor it as the primary headline treatment. Use only <b>Light</b> or <b>Regular</b> weight — never Bold — and never mix Merriweather with Open Sans in the same headline or on the same line.</p>
+</div></body></html>

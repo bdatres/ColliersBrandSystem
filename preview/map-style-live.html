@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Colliers map style (live)" subtitle="MapLibre GL — official Esri vector style" viewport="900x620" -->
+<html><head><meta charset="utf-8"><title>Colliers map style</title>
+<link rel="stylesheet" href="_card.css">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+  .card { width: 900px; }
+  #map { width: 100%; height: 460px; border-radius: 10px; overflow: hidden; border: 1px solid var(--divider); }
+  .legend { display: flex; gap: 18px; margin-top: 12px; font: 400 11px/1.4 var(--font-sans); color: var(--col-dark-blue-grey); flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Colliers map style — live render</p>
+  <div id="map"></div>
+  <div class="legend">
+    <span><i style="background:#dbe5ff"></i>Land</span>
+    <span><i style="background:#8ab9fe"></i>Water</span>
+    <span><i style="background:#3970ff"></i>Major roads</span>
+    <span><i style="background:#25408f"></i>Place labels</span>
+    <span><i style="background:#ffd400;border-radius:50%;"></i>Office marker (brand rule: always yellow)</span>
+  </div>
+  <p class="card-sub">Rendered live from the Colliers ArcGIS vector-tile style (<code>reference/Colliers-Map-Style.json</code>) via MapLibre GL JS — the actual style used in production GIS tooling, not a static approximation.</p>
+</div>
+<script>
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'colliers-map-style-clean.json',
+    center: [-79.38, 43.65],
+    zoom: 10,
+    attributionControl: false
+  });
+  map.on('error', (e) => console.error('map error:', e && e.error));
+  map.on('load', () => {
+    new maplibregl.Marker({ color: '#FFD400' }).setLngLat([-79.38, 43.65]).addTo(map);
+  });
+</script>
+</body></html>

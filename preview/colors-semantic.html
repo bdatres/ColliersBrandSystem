@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Semantic colors" subtitle="fg/bg/link tokens mapped to palette" viewport="700x260" -->
+<html><head><meta charset="utf-8"><title>Semantic colors</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid rgba(53,62,89,0.12);
+    border-radius: 8px;
+  }
+  .chip { width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0; border: 1px solid rgba(53,62,89,0.08); }
+  .name { font-size: 12px; font-weight: 700; color: var(--col-deep-blue); }
+  .val { font-family: ui-monospace, monospace; font-size: 10px; color: var(--col-dark-blue-grey); }
+</style></head>
+<body><div class="card">
+  <p class="card-label">Semantic tokens</p>
+  <div class="grid">
+    <div class="row"><div class="chip" style="background:#000759"></div><div><div class="name">--fg-1</div><div class="val">Deep Blue</div></div></div>
+    <div class="row"><div class="chip" style="background:#353E59"></div><div><div class="name">--fg-2</div><div class="val">Deep Blue Grey</div></div></div>
+    <div class="row"><div class="chip" style="background:#56648F"></div><div><div class="name">--fg-3</div><div class="val">Dark Blue Grey</div></div></div>
+    <div class="row"><div class="chip" style="background:#7B8BBD"></div><div><div class="name">--fg-mute</div><div class="val">Mid Blue Grey</div></div></div>
+    <div class="row"><div class="chip" style="background:#FFFFFF; border-color: #ACBBE8"></div><div><div class="name">--bg-1</div><div class="val">White</div></div></div>
+    <div class="row"><div class="chip" style="background:#DBE5FF"></div><div><div class="name">--bg-2</div><div class="val">Pale Blue Grey</div></div></div>
+    <div class="row"><div class="chip" style="background:#C3E6FF"></div><div><div class="name">--bg-3</div><div class="val">Pale Blue</div></div></div>
+    <div class="row"><div class="chip" style="background:#1C54F4"></div><div><div class="name">--fg-link</div><div class="val">Medium Blue</div></div></div>
+  </div>
+</div></body></html>
