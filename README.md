@@ -146,10 +146,7 @@ Notice: short sentences, "we/you" address, no jargon, ends on a confident assert
 
 ### Graphic elements
 
-**Blocks** and **keylines** are the brand's signature compositional device. Full specimens live in section 07 of `Colliers Design System.html`, in the standalone `Colliers Blocks and Keyline.html`, and across the `preview/block-*.html` and `preview/keyline-*.html` cards.
-
-- **Blocks** — flat, solid primary-blue rectangles for compositional emphasis and hierarchy.
-  - Maximum **two** per layout. If two are used they must **visibly overlap**, be **varied in size** (≥ 3:1 ratio), and at least one side of one block must **extend past** the other (never "flushed", never merely touching).
+### Blocks and Keyline
   - Single blocks can be **anchored** to an edge or **float** anywhere on the canvas. No firm rules on size/proportion.
   - **Color:** primary blues only (Deep, Dark, Medium). The accent block must be **two or three steps brighter/darker, or white** — e.g. Deep + Medium/Light/White, *not* Deep + Dark (insufficient contrast). The secondary palette can be a background but **never a block**; the logo-stripe Light Blue is **never** a block.
   - **Opacity** may drop to 95% over a photo or another block — **never** use Multiply or other layer effects.
