@@ -25,7 +25,6 @@ A high-fidelity recreation of a Colliers-style **marketing / corporate web** sur
 ## Visual rules applied
 
 - **Blue dominates** — every full-bleed section uses Deep, Dark or Medium Blue.
-- **Two blocks per layout, 3:1 ratio** — hero uses Deep Blue + Medium Blue accent.
 - **Highlight box echoes the logo's rounded rectangle** — used on the word "success" in the hero.
 - **Logo stripe** appears as a 14px Yellow / Cyan / Red bar at the bottom of the hero.
 - **Tagline** never used standalone — present in footer only.
